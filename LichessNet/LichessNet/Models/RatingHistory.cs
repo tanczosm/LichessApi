@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LichessNet.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,9 +10,9 @@ namespace LichessNet.Models
     class RatingHistory
     {
         [Newtonsoft.Json.JsonProperty("name")]
-        public string Name;
+        public string Name { get; set; }
 
         [Newtonsoft.Json.JsonProperty("points")]
-        public List<RatingEntry> Points;
+        public List<RatingEntry> Points { get; set; }
     }
 }

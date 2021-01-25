@@ -1,11 +1,12 @@
 ﻿using LichessNet.Enum;
+using LichessNet.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LichessNet.Models
+namespace LichessNet.Entities
 {
     public partial class User
     {
