@@ -69,8 +69,13 @@ namespace LichessNet
             Type areaType = typeof(T);
             if (!Areas.ContainsKey(areaType))
             {
+                // Create new area
                 T area = new T();
+
+                // Inject the lichessNetClient reference
                 area.Initialize(this);
+
+                // Add area to cache
                 Areas.Add(areaType, area);
             }
 
