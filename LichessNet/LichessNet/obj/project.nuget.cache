@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "vtpZVu0Yq4ppTbTWmrikSVoDkOFKfZPB9ifaA9lZ0MeKmIVoivjf6X3f4nYY6Evi6HYlONUC+493KNOA5ooY4A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\mike\\Documents\\Github\\Lichess.net\\LichessNet\\LichessNet\\LichessNet.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\mike\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
