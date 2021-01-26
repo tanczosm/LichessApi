@@ -25,7 +25,7 @@ namespace LichessNet.Api.Account
             string[] claims = { LichessNetConstants.Scopes.EmailRead };
 
             ApiRequest request = new ApiRequest(LiClient, LichessNetConstants.EndPoints.GetMyEmailAddressEndPointUrl,
-                Method.GET, requiredClaims: claims);
+                Method.GET, requiredScopes: claims);
 
             return await request.Execute<EmailResponse>();
         }
@@ -35,7 +35,7 @@ namespace LichessNet.Api.Account
             string[] claims = { LichessNetConstants.Scopes.PreferencesRead };
 
             ApiRequest request = new ApiRequest(LiClient, LichessNetConstants.EndPoints.GetMyPreferencesEndPointUrl,
-                Method.GET, requiredClaims: claims);
+                Method.GET, requiredScopes: claims);
 
             return await request.Execute<UserPreferences>();
         }
@@ -45,7 +45,7 @@ namespace LichessNet.Api.Account
             string[] claims = { LichessNetConstants.Scopes.PreferencesRead };
 
             ApiRequest request = new ApiRequest(LiClient, LichessNetConstants.EndPoints.GetMyKidModeStatusEndPointUrl,
-                Method.GET, requiredClaims: claims);
+                Method.GET, requiredScopes: claims);
 
             return await request.Execute<GetMyKidModeResponse>();
         }
@@ -60,7 +60,7 @@ namespace LichessNet.Api.Account
             };
 
             ApiRequest request = new ApiRequest(LiClient, LichessNetConstants.EndPoints.SetMyKidModeStatusEndPointUrl,
-                Method.POST, payload: payload, requiredClaims: claims);
+                Method.POST, payload: payload, requiredScopes: claims);
 
             return await request.Execute<OkResponse>();
         }

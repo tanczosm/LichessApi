@@ -32,18 +32,18 @@ namespace LichessNet
 
         // Configuration properties
         public string AuthToken { get; set; }
-        public string[] Claims { get; set; }
+        public string[] AuthorizedScopes { get; set; }
 
         /// <summary>
         /// Create a Lichess client using a bearer authToken obtained via Oauth authentication
         /// or through creating an API access key
         /// </summary>
         /// <param name="authToken">auth token obtained from OAuth or generated in Lichess user preferences</param>
-        /// <param name="claims">list of claims that have been authorized for this user</param>
-        public LichessNetClient(string authToken, string[] claims)
+        /// <param name="scopes">list of authorized scopes for this user</param>
+        public LichessNetClient(string authToken, string[] authorizedScopes)
         {
             AuthToken = authToken;
-            Claims = claims;
+            AuthorizedScopes = authorizedScopes;
         }
 
         // Apis

@@ -11,9 +11,9 @@ namespace LichessNet.Models
     public class ApiRequest
     {
         private LichessNetClient LiClient { get; init; }
-        public List<string> RequiredClaims { get; init; }
+        public List<string> RequiredScopes { get; init; }
 
-        public ApiRequest(LichessNetClient liClient, string endpointUrl, Method method, bool authorize = true, object payload = null, string[] requiredClaims = null)
+        public ApiRequest(LichessNetClient liClient, string endpointUrl, Method method, bool authorize = true, object payload = null, string[] requiredScopes = null)
         {
             LiClient = liClient;
 
@@ -25,7 +25,7 @@ namespace LichessNet.Models
                 Method = method
             };
 
-            RequiredClaims = requiredClaims == null ? requiredClaims.ToList() : new List<string>();
+            RequiredScopes = requiredScopes == null ? requiredScopes.ToList() : new List<string>();
 
             if (authorize)
             {
@@ -61,11 +61,11 @@ namespace LichessNet.Models
             ApiResponse<T> fr = new ApiResponse<T>();
 
             // Check to see if there are any required claims that are not currently authorized in the client
-            var missingClaims = RequiredClaims.Except(LiClient.Claims).ToList();
+            var missingScopes = RequiredScopes.Except(LiClient.AuthorizedScopes).ToList();
 
-            if (missingClaims.Count > 0)
+            if (missingScopes.Count > 0)
             {
-                string claims = String.Join(", ", missingClaims);
+                string claims = String.Join(", ", missingScopes);
                 fr.ErrorMessage = $"Unable to complete request.  The following OAuth claims are missing for this request: {claims}";
                 fr.StatusCode = 400;
                 fr.Result = null;
