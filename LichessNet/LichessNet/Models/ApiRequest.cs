@@ -13,7 +13,7 @@ namespace LichessNet.Models
         private LichessNetClient LiClient { get; init; }
         public List<string> RequiredClaims { get; init; }
 
-        public ApiRequest(LichessNetClient liClient, string endpointUrl, Method method, bool authorize = true, object payload = null, List<string> requiredClaims = null)
+        public ApiRequest(LichessNetClient liClient, string endpointUrl, Method method, bool authorize = true, object payload = null, string[] requiredClaims = null)
         {
             LiClient = liClient;
 
@@ -25,7 +25,7 @@ namespace LichessNet.Models
                 Method = method
             };
 
-            RequiredClaims = requiredClaims ?? new List<string>();
+            RequiredClaims = requiredClaims == null ? requiredClaims.ToList() : new List<string>();
 
             if (authorize)
             {
