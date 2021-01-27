@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30028.174
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LichessNet.Web", "LichessApi.Web\LichessApi.Web.csproj", "{81AD20A9-5070-4B68-85AD-EEDB7A29F17C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LichessApi.Web", "LichessApi.Web\LichessApi.Web.csproj", "{81AD20A9-5070-4B68-85AD-EEDB7A29F17C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LichessNet.Test", "LichessApi.Test\LichessApi.Test.csproj", "{830E0E41-77B0-444C-BC6F-643E4851EEAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LichessApi.Web.Test", "LichessApi.Web.Test\LichessApi.Web.Test.csproj", "{830E0E41-77B0-444C-BC6F-643E4851EEAE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LichessApi.Web.Examples", "LichessApi.Web.Examples", "{2C1661F1-484E-4564-BBF9-C9527709680F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Console", "Example.Console\Example.Console.csproj", "{3B5E2559-08E9-48F7-9E83-57C3F7FDB279}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +25,16 @@ Global
 		{830E0E41-77B0-444C-BC6F-643E4851EEAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{830E0E41-77B0-444C-BC6F-643E4851EEAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{830E0E41-77B0-444C-BC6F-643E4851EEAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B5E2559-08E9-48F7-9E83-57C3F7FDB279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B5E2559-08E9-48F7-9E83-57C3F7FDB279}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B5E2559-08E9-48F7-9E83-57C3F7FDB279}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B5E2559-08E9-48F7-9E83-57C3F7FDB279}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3B5E2559-08E9-48F7-9E83-57C3F7FDB279} = {2C1661F1-484E-4564-BBF9-C9527709680F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2893E222-213C-467E-8663-63ECB99A0EFE}

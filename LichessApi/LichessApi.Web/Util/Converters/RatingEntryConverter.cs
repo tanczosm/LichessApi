@@ -1,4 +1,4 @@
-﻿using LichessApi.Entities;
+﻿using LichessApi.Web.Entities;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;

@@ -1,12 +1,12 @@
-﻿using LichessApi.Enum;
-using LichessApi.Models;
+﻿using LichessApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LichessApi.Web.Entities.Enum;
 
-namespace LichessApi.Entities
+namespace LichessApi.Web.Entities
 {
     public partial class User
     {
@@ -23,7 +23,7 @@ namespace LichessApi.Entities
         public Perfs Perfs { get; set; }
 
         [Newtonsoft.Json.JsonProperty("createdAt", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int CreatedAt { get; set; }
+        public long CreatedAt { get; set; }
 
         [Newtonsoft.Json.JsonProperty("disabled", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool Disabled { get; set; }
@@ -38,7 +38,7 @@ namespace LichessApi.Entities
         public Profile Profile { get; set; }
 
         [Newtonsoft.Json.JsonProperty("seenAt", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int SeenAt { get; set; }
+        public long SeenAt { get; set; }
 
         [Newtonsoft.Json.JsonProperty("patron", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool Patron { get; set; }

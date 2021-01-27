@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LichessApi.Entities
+namespace LichessApi.Web.Entities
 {
     [JsonConverter(typeof(RatingEntryConverter))]
     public class RatingEntry

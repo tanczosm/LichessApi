@@ -1,11 +1,11 @@
-﻿using LichessApi.Enum;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LichessApi.Web.Entities.Enum;
 
-namespace LichessApi.Entities
+namespace LichessApi.Web.Entities
 {
     public partial class UserPreferences
     {

@@ -1,4 +1,4 @@
-﻿using LichessApi.Enum;
+﻿using LichessApi.Web.Entities.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;

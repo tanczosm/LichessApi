@@ -4,16 +4,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LichessApi.Web.Http;
 
 namespace LichessApi.Models
 {
     public class ApiBase : ICanInitialize
     {
-        public LichessApiClient LiClient { get; private set; }
+        protected IApiConnector API { get; private set; }
 
-        public void Initialize(LichessApiClient liClient)
+        public void Initialize(IApiConnector api)
         {
-            this.LiClient = liClient;
+            this.API = api;
         }
     }
 }

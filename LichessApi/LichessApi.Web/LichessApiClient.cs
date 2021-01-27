@@ -18,6 +18,8 @@ using LichessApi.Api.Users;
 using LichessApi.Models;
 using System;
 using System.Collections.Generic;
+using LichessApi.Web;
+using LichessApi.Web.Http;
 
 namespace LichessApi
 {
@@ -26,24 +28,37 @@ namespace LichessApi
         // Object cache to store api objects
         private Dictionary<Type, object> Areas = new Dictionary<Type, object>();
 
-        // Static global client configuration options
-        public static string EndPointBaseUrl { get; set; } = LichessApiDefaults.EndPointBaseUrl;
-        public static int RequestTimeout { get; set; } = LichessApiDefaults.RequestTimeout;
-
         // Configuration properties
-        public string AuthToken { get; set; }
-        public string[] AuthorizedScopes { get; set; }
+        public LichessApiClientConfig Configuration { get; init; }
+        protected IApiConnector API { get; init; }
+
+        public LichessApiClient(string token, string tokenType = "Bearer") :
+            this(LichessApiClientConfig.CreateDefault(token, tokenType))
+        { }
 
         /// <summary>
         /// Create a Lichess client using a bearer authToken obtained via Oauth authentication
         /// or through creating an API access key
         /// </summary>
         /// <param name="authToken">auth token obtained from OAuth or generated in Lichess user preferences</param>
-        /// <param name="scopes">list of authorized scopes for this user</param>
-        public LichessApiClient(string authToken, string[] authorizedScopes)
+        public LichessApiClient(LichessApiClientConfig config)
         {
-            AuthToken = authToken;
-            AuthorizedScopes = authorizedScopes;
+            Ensure.ArgumentNotNull(config, nameof(config));
+            if (config.Authenticator == null)
+            {
+#pragma warning disable CA2208
+                throw new ArgumentNullException("Authenticator in config is null. Please supply it via `WithAuthenticator` or `WithToken`");
+#pragma warning restore CA2208
+            }
+
+            Configuration = config;
+
+            API = config.BuildAPIConnector();
+
+            API.ResponseReceived += (sender, response) =>
+            {
+                LastResponse = response;
+            };
         }
 
         // Apis
@@ -63,7 +78,7 @@ namespace LichessApi
         public SwissTournaments SwissTournaments { get { return GetArea<SwissTournaments>(); } }
         public Teams Teams { get { return GetArea<Teams>(); } }
         public Users Users { get { return GetArea<Users>(); } }
-
+        public IResponse? LastResponse { get; private set; }
 
         /// <summary>
         /// Allows for lazy initialization of api clients
@@ -79,7 +94,7 @@ namespace LichessApi
                 T area = new T();
 
                 // Inject the lichessNetClient reference
-                area.Initialize(this);
+                area.Initialize(API);
 
                 // Add area to cache
                 Areas.Add(areaType, area);

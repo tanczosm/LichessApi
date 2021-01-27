@@ -7,62 +7,59 @@ using System.Text;
 using System.Threading.Tasks;
 using RestSharp;
 using LichessApi.Api.Account.Response;
-using LichessApi.Entities;
+using LichessApi.Web.Api.Account.Request;
+using LichessApi.Web.Entities;
 
 namespace LichessApi.Api.Account
 {
     public class Account : ApiBase
     {
-        public async Task<ApiResponse<UserExtended>> GetMyProfile()
+        public Task<UserExtended> GetProfile()
         {
-            ApiRequest request = new ApiRequest(LiClient, LichessApiConstants.EndPoints.GetMyProfileEndPointUrl, Method.GET);
-
-            return await request.Execute<UserExtended>();
+            return API.Get<UserExtended>(LichessApiConstants.EndPoints.GetMyProfile());
         }
 
-        public async Task<ApiResponse<EmailResponse>> GetMyEmailAddress()
+        /// <summary>
+        /// Retrieves member email address
+        /// Required Scope: LichessApiConstants.Scopes.EmailRead
+        /// </summary>
+        /// <returns></returns>
+        public Task<EmailResponse> GetEmailAddress()
         {
-            string[] claims = { LichessApiConstants.Scopes.EmailRead };
-
-            ApiRequest request = new ApiRequest(LiClient, LichessApiConstants.EndPoints.GetMyEmailAddressEndPointUrl,
-                Method.GET, requiredScopes: claims);
-
-            return await request.Execute<EmailResponse>();
+            return API.Get<EmailResponse>(LichessApiConstants.EndPoints.GetMyEmailAddress());
         }
 
-        public async Task<ApiResponse<UserPreferences>> GetMyPreferences()
+        /// <summary>
+        /// Required Scope: LichessApiConstants.Scopes.PreferencesRead
+        /// </summary>
+        /// <returns></returns>
+        public Task<UserPreferences> GetPreferences()
         {
-            string[] claims = { LichessApiConstants.Scopes.PreferencesRead };
-
-            ApiRequest request = new ApiRequest(LiClient, LichessApiConstants.EndPoints.GetMyPreferencesEndPointUrl,
-                Method.GET, requiredScopes: claims);
-
-            return await request.Execute<UserPreferences>();
+            return API.Get<UserPreferences>(LichessApiConstants.EndPoints.GetMyPreferences());
         }
 
-        public async Task<ApiResponse<GetMyKidModeResponse>> GetMyKidModeStatus()
+        /// <summary>
+        /// Required Scope: LichessApiConstants.Scopes.PreferencesRead
+        /// </summary>
+        /// <returns></returns>
+        public Task<GetMyKidModeResponse> GetKidModeStatus()
         {
-            string[] claims = { LichessApiConstants.Scopes.PreferencesRead };
-
-            ApiRequest request = new ApiRequest(LiClient, LichessApiConstants.EndPoints.GetMyKidModeStatusEndPointUrl,
-                Method.GET, requiredScopes: claims);
-
-            return await request.Execute<GetMyKidModeResponse>();
+            return API.Get<GetMyKidModeResponse>(LichessApiConstants.EndPoints.GetMyKidModeStatus());
         }
 
-        public async Task<ApiResponse<OkResponse>> SetMyKidModeStatus(bool v)
+        /// <summary>
+        /// Required Scope: LichessApiConstants.Scopes.PreferencesWrite
+        /// </summary>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        public Task<OkResponse> SetMyKidModeStatus(bool v)
         {
-            string[] claims = { LichessApiConstants.Scopes.PreferencesWrite };
-
-            var payload = new
+            var request = new SetMyKidModeStatusRequest
             {
-                v
+                V = v
             };
 
-            ApiRequest request = new ApiRequest(LiClient, LichessApiConstants.EndPoints.SetMyKidModeStatusEndPointUrl,
-                Method.POST, payload: payload, requiredScopes: claims);
-
-            return await request.Execute<OkResponse>();
+            return API.Post<OkResponse>(LichessApiConstants.EndPoints.SetMyKidModeStatus(), request.BuildQueryParams());
         }
     }
 }

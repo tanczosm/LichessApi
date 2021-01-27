@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LichessApi.Entities
+namespace LichessApi.Web.Entities
 {
     public partial class Clock
     {

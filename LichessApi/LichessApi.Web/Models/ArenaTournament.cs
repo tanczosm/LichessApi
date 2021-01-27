@@ -1,5 +1,5 @@
-﻿using LichessApi.Entities;
-using LichessApi.Entities.Enum;
+﻿using LichessApi.Web.Entities;
+using LichessApi.Web.Entities.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
