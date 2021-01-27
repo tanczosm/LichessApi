@@ -45,6 +45,7 @@ namespace LichessApi.Web.Http
       return await BuildResponse(responseMsg).ConfigureAwait(false);
     }
 
+    // Note: For Ndjson streaming requests you can't just ReadAsStringAsync() but need to call extension ReadFromNdjsonAsync
     private static async Task<IResponse> BuildResponse(HttpResponseMessage responseMsg)
     {
       Ensure.ArgumentNotNull(responseMsg, nameof(responseMsg));
