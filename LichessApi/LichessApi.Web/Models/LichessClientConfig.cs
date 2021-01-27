@@ -4,7 +4,8 @@ using LichessApi.Web.Http;
 
 namespace LichessApi.Web
 {
-  public class LichessApiClientConfig
+#nullable enable
+    public class LichessApiClientConfig
   {
     public Uri BaseAddress { get; private set; }
     public IAuthenticator? Authenticator { get; private set; }
@@ -14,7 +15,7 @@ namespace LichessApi.Web
     public IApiConnector? ApiConnector { get; private set; }
 
     /// <summary>
-    ///   This config spefies the internal parts of the SpotifyClient.
+    ///   This config spefies the internal parts of the LichessClient.
     /// </summary>
     /// <param name="baseAddress"></param>
     /// <param name="authenticator"></param>
@@ -145,4 +146,5 @@ namespace LichessApi.Web
       );
     }
   }
+#nullable disable
 }

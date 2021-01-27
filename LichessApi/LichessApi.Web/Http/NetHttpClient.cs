@@ -10,7 +10,9 @@ namespace LichessApi.Web.Http
 {
   public class NetHttpClient : IHTTPClient
   {
+#pragma warning disable CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
     private readonly HttpMessageHandler? _httpMessageHandler;
+#pragma warning restore CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
     private readonly HttpClient _httpClient;
 
     public NetHttpClient()

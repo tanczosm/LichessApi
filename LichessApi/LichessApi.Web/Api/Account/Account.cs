@@ -14,14 +14,21 @@ namespace LichessApi.Api.Account
 {
     public class Account : ApiBase
     {
+        /// <summary>
+        /// Public informations about the logged in user.
+        /// <see href="https://lichess.org/api#tag/Account"/></see>
+        /// </summary>
+        /// <returns></returns>
         public Task<UserExtended> GetProfile()
         {
             return API.Get<UserExtended>(LichessApiConstants.EndPoints.GetMyProfile());
         }
 
         /// <summary>
-        /// Retrieves member email address
+        /// Get my email address
+        /// Read the email address of the logged in user.
         /// Required Scope: LichessApiConstants.Scopes.EmailRead
+        /// <see href="https://lichess.org/api#operation/accountEmail"/>
         /// </summary>
         /// <returns></returns>
         public Task<EmailResponse> GetEmailAddress()
@@ -30,7 +37,10 @@ namespace LichessApi.Api.Account
         }
 
         /// <summary>
+        /// Get my preferences
+        /// Read the preferences of the logged in user.
         /// Required Scope: LichessApiConstants.Scopes.PreferencesRead
+        /// <see href="https://lichess.org/api#operation/account"/>
         /// </summary>
         /// <returns></returns>
         public Task<UserPreferences> GetPreferences()
@@ -39,7 +49,10 @@ namespace LichessApi.Api.Account
         }
 
         /// <summary>
+        /// Get my kid mode status
+        /// Read the kid mode status of the logged in user.
         /// Required Scope: LichessApiConstants.Scopes.PreferencesRead
+        /// <see href="https://lichess.org/api#operation/accountKid"/>
         /// </summary>
         /// <returns></returns>
         public Task<GetMyKidModeResponse> GetKidModeStatus()
@@ -48,10 +61,13 @@ namespace LichessApi.Api.Account
         }
 
         /// <summary>
+        /// Set my kid mode status
+        /// Set the kid mode status of the logged in user.
         /// Required Scope: LichessApiConstants.Scopes.PreferencesWrite
+        /// <see href="https://lichess.org/api#operation/accountKidPost"/>
         /// </summary>
         /// <param name="v"></param>
-        /// <returns></returns>
+        /// <returns>OkResponse</returns>
         public Task<OkResponse> SetMyKidModeStatus(bool v)
         {
             var request = new SetMyKidModeStatusRequest
