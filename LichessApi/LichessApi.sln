@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LichessApi.Web.Test", "Lich
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LichessApi.Web.Examples", "LichessApi.Web.Examples", "{2C1661F1-484E-4564-BBF9-C9527709680F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Console", "Example.Console\Example.Console.csproj", "{3B5E2559-08E9-48F7-9E83-57C3F7FDB279}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.Console", "LichessApi.Web.Examples\Example.Console\Example.Console.csproj", "{5B6A6908-9F86-45AE-9C29-ADF96946B042}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,16 +25,16 @@ Global
 		{830E0E41-77B0-444C-BC6F-643E4851EEAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{830E0E41-77B0-444C-BC6F-643E4851EEAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{830E0E41-77B0-444C-BC6F-643E4851EEAE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3B5E2559-08E9-48F7-9E83-57C3F7FDB279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3B5E2559-08E9-48F7-9E83-57C3F7FDB279}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3B5E2559-08E9-48F7-9E83-57C3F7FDB279}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3B5E2559-08E9-48F7-9E83-57C3F7FDB279}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B6A6908-9F86-45AE-9C29-ADF96946B042}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B6A6908-9F86-45AE-9C29-ADF96946B042}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B6A6908-9F86-45AE-9C29-ADF96946B042}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B6A6908-9F86-45AE-9C29-ADF96946B042}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{3B5E2559-08E9-48F7-9E83-57C3F7FDB279} = {2C1661F1-484E-4564-BBF9-C9527709680F}
+		{5B6A6908-9F86-45AE-9C29-ADF96946B042} = {2C1661F1-484E-4564-BBF9-C9527709680F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2893E222-213C-467E-8663-63ECB99A0EFE}
