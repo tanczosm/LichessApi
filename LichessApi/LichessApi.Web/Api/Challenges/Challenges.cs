@@ -10,6 +10,7 @@ using LichessApi.Web.Api.Challenges.Response;
 using LichessApi.Api.Account.Response;
 using LichessApi.Web.Api.Challenges.Request;
 using LichessApi.Web.Entities.Enum;
+using Shouldly;
 
 namespace LichessApi.Api.Challenges
 {
@@ -49,6 +50,9 @@ namespace LichessApi.Api.Challenges
         /// <returns></returns>
         public Task<Challenge> CreateChallenge(string opponentUsername, CreateChallengeRequest request)
         {
+            request.Days.ShouldBeGreaterThan(0);
+            request.Days.ShouldBeLessThan(16);
+
             return API.Post<Challenge>(LichessApiConstants.EndPoints.CreateChallenge(opponentUsername), null, request.BuildBodyParams());
         }
 
@@ -122,9 +126,10 @@ namespace LichessApi.Api.Challenges
         /// <see href=""/></see>
         /// </summary>
         /// <returns></returns>
-        public Task<bool> CreateOpenEndedChallenge()
+        public Task<ChallengeResponse> CreateOpenEndedChallenge(CreateOpenEndedChallengeRequest request)
         {
-            throw new NotImplementedException();
+
+            return API.Post<ChallengeResponse>(LichessApiConstants.EndPoints.ChallengeAI(), null, request.BuildBodyParams());
         }
 
         /// <summary>
