@@ -4,6 +4,9 @@ using LichessApi.Web.Http;
 
 namespace LichessApi.Web
 {
+    /// <summary>
+    /// Exception that is generated when API calls are unauthorized
+    /// </summary>
     [Serializable]
     public class ApiUnauthorizedException : ApiException
     {
