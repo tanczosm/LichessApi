@@ -268,7 +268,7 @@ namespace LichessApi.Web.Http
 
       throw response.StatusCode switch
       {
-        HttpStatusCode.Unauthorized => new APIUnauthorizedException(response)
+        HttpStatusCode.Unauthorized => new ApiUnauthorizedException(response)
       };
     }
   }

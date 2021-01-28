@@ -7,32 +7,32 @@ using System.Runtime.Serialization;
 namespace LichessApi.Web
 {
   [Serializable]
-  public class APIException : Exception
+  public class ApiException : Exception
   {
     public IResponse? Response { get; set; }
 
-    public APIException(IResponse response) : base(ParseAPIErrorMessage(response))
+    public ApiException(IResponse response) : base(ParseAPIErrorMessage(response))
     {
       Ensure.ArgumentNotNull(response, nameof(response));
 
       Response = response;
     }
 
-    public APIException()
+    public ApiException()
     {
     }
 
-    public APIException(string message) : base(message)
+    public ApiException(string message) : base(message)
     {
     }
 
-    public APIException(string message, Exception innerException) : base(message, innerException)
+    public ApiException(string message, Exception innerException) : base(message, innerException)
     {
     }
 
-    protected APIException(SerializationInfo info, StreamingContext context) : base(info, context)
+    protected ApiException(SerializationInfo info, StreamingContext context) : base(info, context)
     {
-      Response = info.GetValue("APIException.Response", typeof(IResponse)) as IResponse;
+      Response = info.GetValue("ApiException.Response", typeof(IResponse)) as IResponse;
     }
 
     private static string? ParseAPIErrorMessage(IResponse response)
@@ -67,7 +67,7 @@ namespace LichessApi.Web
     public override void GetObjectData(SerializationInfo info, StreamingContext context)
     {
       base.GetObjectData(info, context);
-      info.AddValue("APIException.Response", Response);
+      info.AddValue("ApiException.Response", Response);
     }
   }
 }

@@ -4,17 +4,17 @@ using LichessApi.Web.Http;
 
 namespace LichessApi.Web
 {
-  [Serializable]
-  public class APIUnauthorizedException : APIException
-  {
-    public APIUnauthorizedException(IResponse response) : base(response) { }
+    [Serializable]
+    public class ApiUnauthorizedException : ApiException
+    {
+        public ApiUnauthorizedException(IResponse response) : base(response) { }
 
-    public APIUnauthorizedException() { }
+        public ApiUnauthorizedException() { }
 
-    public APIUnauthorizedException(string message) : base(message) { }
+        public ApiUnauthorizedException(string message) : base(message) { }
 
-    public APIUnauthorizedException(string message, Exception innerException) : base(message, innerException) { }
+        public ApiUnauthorizedException(string message, Exception innerException) : base(message, innerException) { }
 
-    protected APIUnauthorizedException(SerializationInfo info, StreamingContext context) : base(info, context) { }
-  }
+        protected ApiUnauthorizedException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+    }
 }
