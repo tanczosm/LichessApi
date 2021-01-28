@@ -146,7 +146,7 @@ namespace LichessApi.Web
         }
         else
         {
-          queryParams.Add(attribute.Key ?? prop.Name, value.ToString() ?? throw new APIException("ToString returned null for query parameter"));
+          queryParams.Add(attribute.Key ?? prop.Name, value.ToString() ?? throw new ApiException("ToString returned null for query parameter"));
         }
       }
     }

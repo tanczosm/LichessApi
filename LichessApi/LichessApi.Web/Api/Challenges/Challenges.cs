@@ -4,6 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LichessApi.Api.Challenges.Request;
+using LichessApi.Web;
+using LichessApi.Web.Api.Challenges.Response;
+using LichessApi.Api.Account.Response;
+using LichessApi.Web.Api.Challenges.Request;
+using LichessApi.Web.Entities.Enum;
 
 namespace LichessApi.Api.Challenges
 {
@@ -41,45 +47,75 @@ namespace LichessApi.Api.Challenges
         /// <see href="https://lichess.org/api#operation/challengeCreate"/></see>
         /// </summary>
         /// <returns></returns>
-        public Task<bool> CreateChallenge(string opponent, object request)  // TODO: Create request object
+        public Task<Challenge> CreateChallenge(string opponentUsername, CreateChallengeRequest request)
         {
-            throw new NotImplementedException();
+            return API.Post<Challenge>(LichessApiConstants.EndPoints.CreateChallenge(opponentUsername), null, request.BuildBodyParams());
+        }
+
+        // TODO: Verify if this works as the documentation is a little sketchy
+        public Task<GameResponse> CreateGame(string opponentUsername, string opponentToken, CreateGameRequest request)
+        {
+            request.acceptByToken = opponentToken;
+            
+            return API.Post<GameResponse>(LichessApiConstants.EndPoints.CreateChallenge(opponentUsername), null, request.BuildBodyParams());
+        }
+
+
+        /// <summary>
+        /// Accept an incoming challenge.
+        /// You should receive a gameStart event on the incoming events stream.
+        /// Required Scopes:
+        ///  LichessApiConstants.Scopes.ChallengeWrite;
+        ///  LichessApiConstants.Scopes.BotPlay;
+        ///  LichessApiConstants.Scopes.BoardPlay
+        /// <see href="https://lichess.org/api#operation/challengeAccept"/></see>
+        /// </summary>
+        /// <returns>OkResponse</returns>
+        public Task<OkResponse> AcceptChallenge(string challengeId)
+        {
+            return API.Post<OkResponse>(LichessApiConstants.EndPoints.AcceptChallenge(challengeId), null);
+        }
+
+        /// <summary>
+        /// Decline an incoming challenge.
+        /// Required Scopes:
+        ///  LichessApiConstants.Scopes.ChallengeWrite;
+        ///  LichessApiConstants.Scopes.BotPlay;
+        ///  LichessApiConstants.Scopes.BoardPlay
+        /// <see href=""/></see>
+        /// </summary>
+        /// <returns></returns>
+        public Task<OkResponse> DeclineChallenge(string challengeId, ChallengeDeclineReason reason)
+        {
+            var request = new DeclineChallengeRequest
+            {
+                Reason = reason
+            };
+
+            return API.Post<OkResponse>(LichessApiConstants.EndPoints.DeclineChallenge(challengeId), null, request.BuildBodyParams());
+        }
+
+        /// <summary>
+        /// Cancel an incoming challenge.
+        /// Required Scopes:
+        ///  LichessApiConstants.Scopes.ChallengeWrite;
+        ///  LichessApiConstants.Scopes.BotPlay;
+        ///  LichessApiConstants.Scopes.BoardPlay
+        /// <see href=""/></see>
+        /// </summary>
+        /// <returns></returns>
+        public Task<OkResponse> CancelChallenge(string challengeId)
+        {
+            return API.Post<OkResponse>(LichessApiConstants.EndPoints.CancelChallenge(challengeId), null);
         }
 
         /// <summary>
         /// <see href=""/></see>
         /// </summary>
         /// <returns></returns>
-        public Task<bool> AcceptChallenge(string challengeId)
+        public Task<ChallengeAIResponse> ChallengeAI(ChallengeAIRequest request)  
         {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// <see href=""/></see>
-        /// </summary>
-        /// <returns></returns>
-        public Task<bool> DeclineChallenge(string challengeId, object request)  // TODO: Create request object
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// <see href=""/></see>
-        /// </summary>
-        /// <returns></returns>
-        public Task<bool> CancelChallenge(string challengeId)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// <see href=""/></see>
-        /// </summary>
-        /// <returns></returns>
-        public Task<bool> ChallengeAI(object request)  // TODO: Create request object
-        {
-            throw new NotImplementedException();
+            return API.Post<ChallengeAIResponse>(LichessApiConstants.EndPoints.ChallengeAI(), null, request.BuildBodyParams());
         }
 
         /// <summary>

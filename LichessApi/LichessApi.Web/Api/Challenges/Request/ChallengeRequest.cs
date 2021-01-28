@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LichessApi.Web;
 
 namespace LichessApi.Api.Challenges.Request
 {
-    public partial class ChallengeRequest
+    public partial class ChallengeRequest : RequestParams
     {
         /// <summary>The tournament name. Leave empty to get a random Grandmaster name</summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
