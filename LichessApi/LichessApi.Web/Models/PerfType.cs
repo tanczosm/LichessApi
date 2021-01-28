@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LichessApi.Models
 {
-    public partial class Perfs
+    public partial class PerfType
     {
         [Newtonsoft.Json.JsonProperty("chess960", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Perf Chess960 { get; set; }

@@ -34,6 +34,12 @@ namespace LichessApi.Models
         [Newtonsoft.Json.JsonProperty("destUser", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public LightUser DestUser { get; set; }
 
+        /// <summary>
+        /// Game Id of rematch
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("rematchOf", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string RematchOf { get; set; }
+
         [Newtonsoft.Json.JsonProperty("rated", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool Rated { get; set; }
 
@@ -42,6 +48,12 @@ namespace LichessApi.Models
 
         [Newtonsoft.Json.JsonProperty("status", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Status { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("declineReason", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public ChallengeDeclineReason? DeclineReason { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("open", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool Open { get; set; } = true;
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 

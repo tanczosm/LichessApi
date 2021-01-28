@@ -20,7 +20,7 @@ namespace LichessApi.Web.Entities
         public bool Online { get; set; }
 
         [Newtonsoft.Json.JsonProperty("perfs", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Perfs Perfs { get; set; }
+        public PerfType Perfs { get; set; }
 
         [Newtonsoft.Json.JsonProperty("createdAt", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public long CreatedAt { get; set; }
