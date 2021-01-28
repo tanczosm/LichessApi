@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net50</TargetFramework>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -18,6 +18,22 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="JetBrains.Annotations" PrivateAssets="All" />
+    <PackageReference Include="MartinCostello.Logging.XUnit" />
+    <PackageReference Include="Moq" />
+    <PackageReference Include="Shouldly" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="xunit.runner.json;**\bundle.json" Exclude="bin\**\bundle.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="xunit.runner.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LichessApi.Web\LichessApi.Web.csproj" />
   </ItemGroup>
 
 </Project>
