@@ -65,7 +65,7 @@ namespace LichessApi
             public static Uri MessageAllMembers(string teamId)       => EUri($"/team/{teamId}/pm-all");
 
             // Board
-            public static Uri StreamIncomingEvents()                => EUri($"/api/board/seek");
+            public static Uri StreamIncomingEvents()                => EUri($"/api/stream/event");
             public static Uri CreateASeek()                         => EUri($"/api/board/seek");
             public static Uri StreamBoardGameState(string gameId)   => EUri($"/api/board/game/stream/{gameId}");
             public static Uri MakeABoardMove(string gameId, string move) => EUri($"/api/board/game/{gameId}/move/{move}");

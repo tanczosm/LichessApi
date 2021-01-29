@@ -8,11 +8,8 @@ using LichessApi.Web;
 
 namespace LichessApi.Api.Challenges.Request
 {
-    public partial class CreateChallengeRequest : RequestParams
+    public partial class CreateOpenEndedChallengeRequest : RequestParams
     {
-        [Newtonsoft.Json.JsonProperty("rated", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore, Required = Newtonsoft.Json.Required.Default)]
-        public bool Rated { get; set; }
-
         /// <summary>Clock initial time in seconds - Set to null for correspondence game</summary>
         [Newtonsoft.Json.JsonProperty("clock.limit", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore, Required = Newtonsoft.Json.Required.Default)]
         public int? ClockLimit { get; set; }
@@ -20,12 +17,6 @@ namespace LichessApi.Api.Challenges.Request
         /// <summary>Clock increment in seconds - Set to null for correspondence game</summary>
         [Newtonsoft.Json.JsonProperty("clock.increment", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore, Required = Newtonsoft.Json.Required.Default)]
         public int? ClockIncrement { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("days", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore, Required = Newtonsoft.Json.Required.Default)]
-        public int? Days { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("color", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore, Required = Newtonsoft.Json.Required.Default)]
-        public Color Color { get; set; }
 
         /// <summary>The variant to use in tournament games</summary>
         [Newtonsoft.Json.JsonProperty("variant", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]

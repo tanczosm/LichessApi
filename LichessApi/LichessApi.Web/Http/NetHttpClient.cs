@@ -39,7 +39,7 @@ namespace LichessApi.Web.Http
 
             using HttpRequestMessage requestMsg = BuildRequestMessage(request);
             var responseMsg = await _httpClient
-                    .SendAsync(requestMsg, HttpCompletionOption.ResponseContentRead)
+                    .SendAsync(requestMsg, HttpCompletionOption.ResponseHeadersRead)
                     .ConfigureAwait(false);
 
             return await BuildResponse(responseMsg).ConfigureAwait(false);

@@ -33,6 +33,8 @@ namespace LichessApi.Web.Http
       _httpLogger = httpLogger;
     }
 
+    public IJSONSerializer JSONSerializer { get { return _jsonSerializer; } }
+
     public Task<T> Delete<T>(Uri uri)
     {
       Ensure.ArgumentNotNull(uri, nameof(uri));

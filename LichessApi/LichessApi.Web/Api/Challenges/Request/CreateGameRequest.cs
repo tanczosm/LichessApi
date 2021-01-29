@@ -8,7 +8,7 @@ using LichessApi.Web;
 
 namespace LichessApi.Api.Challenges.Request
 {
-    public partial class CreateGameRequest : CreateChallengeRequest
+    public partial class CreateGameRequest : ChallengeRequest
     {
         [Newtonsoft.Json.JsonProperty("acceptsByToken", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string acceptByToken { get; set; } = "";

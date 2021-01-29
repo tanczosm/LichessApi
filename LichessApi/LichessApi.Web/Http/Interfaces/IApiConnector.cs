@@ -10,7 +10,7 @@ namespace LichessApi.Web.Http
   {
     // IAuthenticator Authenticator { get; }
 
-    // IJSONSerializer JSONSerializer { get; }
+    IJSONSerializer JSONSerializer { get; }
 
     // IHTTPClient HTTPClient { get; }
 
@@ -45,6 +45,14 @@ namespace LichessApi.Web.Http
       IDictionary<string, string>? parameters = null,
       object? body = null,
       IDictionary<string, string>? headers = null);
+
+    Task<IResponse> SendRawRequest(
+        Uri uri,
+        HttpMethod method,
+        IDictionary<string, string>? parameters = null,
+        object? body = null,
+        IDictionary<string, string>? headers = null
+        );
 
     void SetRequestTimeout(TimeSpan timeout);
   }

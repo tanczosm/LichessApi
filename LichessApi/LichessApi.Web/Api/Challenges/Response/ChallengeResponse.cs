@@ -8,7 +8,7 @@ using LichessApi.Web.Entities.Enum;
 
 namespace LichessApi.Web.Api.Challenges.Response
 {
-    public class OpenEndedChallengeResponse
+    public class ChallengeResponse
     {
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
@@ -46,5 +46,10 @@ namespace LichessApi.Web.Api.Challenges.Response
         [Newtonsoft.Json.JsonProperty("destUser", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public LightUser DestUser { get; set; }
 
+        [Newtonsoft.Json.JsonProperty("status", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Status { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("declineReason", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string DeclineReason { get; set; }
     }
 }

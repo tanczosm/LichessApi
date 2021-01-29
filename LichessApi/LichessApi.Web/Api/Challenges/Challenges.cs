@@ -11,6 +11,11 @@ using LichessApi.Api.Account.Response;
 using LichessApi.Web.Api.Challenges.Request;
 using LichessApi.Web.Entities.Enum;
 using Shouldly;
+using System.Net.Http;
+using System.IO;
+using System.Runtime.CompilerServices;
+using System.Threading;
+using LichessApi.Web.Http;
 
 namespace LichessApi.Api.Challenges
 {
@@ -32,10 +37,34 @@ namespace LichessApi.Api.Challenges
         /// <see href=""/></see>
         /// </summary>
         /// <returns></returns>
-        public Task<bool> StreamIncomingEvents()
+        public async IAsyncEnumerable<EventStreamResponse> StreamIncomingEvents([EnumeratorCancellation] CancellationToken token = default)
         {
             // See https://www.tpeczek.com/2020/10/consuming-json-objects-stream-ndjson.html
-            throw new NotImplementedException();
+
+            var response = await API.SendRawRequest(LichessApiConstants.EndPoints.StreamIncomingEvents(), HttpMethod.Get).ConfigureAwait(false);
+            
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {                
+                using (response.Body as Stream)
+                {
+                    using (StreamReader contentStreamReader = new StreamReader(response.Body as Stream))
+                    {
+                        while (!contentStreamReader.EndOfStream && !token.IsCancellationRequested)
+                        {
+                            // Generate new mock headers
+
+                            Response apiResponse = new Response (response.Headers.Select(dict => dict).ToDictionary(pair => pair.Key, pair => pair.Value)) { 
+                                Body = await contentStreamReader.ReadLineAsync()
+                            };
+                            apiResponse.ContentType = "application/json";
+
+                            yield return API.JSONSerializer.DeserializeResponse<EventStreamResponse>(apiResponse as IResponse).Body;
+                        }
+                    }
+                }
+            }
+
+            yield break;
         }
 
         /// <summary>
@@ -48,7 +77,7 @@ namespace LichessApi.Api.Challenges
         /// <see href="https://lichess.org/api#operation/challengeCreate"/></see>
         /// </summary>
         /// <returns></returns>
-        public Task<Challenge> CreateChallenge(string opponentUsername, CreateChallengeRequest request)
+        public Task<Challenge> CreateChallenge(string opponentUsername, ChallengeRequest request)
         {
             request.Days.ShouldBeGreaterThan(0);
             request.Days.ShouldBeLessThan(16);
@@ -114,7 +143,9 @@ namespace LichessApi.Api.Challenges
         }
 
         /// <summary>
-        /// <see href=""/></see>
+        /// Start a game with Lichess AI.
+        /// You will be notified on the event stream that a new game has started.
+        /// <see href="https://lichess.org/api#operation/challengeAi"/></see>
         /// </summary>
         /// <returns></returns>
         public Task<ChallengeAIResponse> ChallengeAI(ChallengeAIRequest request)  
@@ -123,40 +154,61 @@ namespace LichessApi.Api.Challenges
         }
 
         /// <summary>
-        /// <see href=""/></see>
+        /// Create a challenge that any 2 players can join.
+        /// Share the URL of the challenge.the first 2 players to click it will be paired for a game.
+        /// The response body also contains whiteUrl and blackUrl. You can control which color each player gets by giving them 
+        /// these URLs, instead of the main challenge URL.
+        ///
+        /// Open challenges expire after 24h.
+        /// To directly pair 2 known players, use the CreateGame() endpoint instead, with the acceptByToken parameter.
+        /// <see href="https://lichess.org/api#operation/challengeOpen"/></see>
         /// </summary>
         /// <returns></returns>
         public Task<ChallengeResponse> CreateOpenEndedChallenge(CreateOpenEndedChallengeRequest request)
         {
 
-            return API.Post<ChallengeResponse>(LichessApiConstants.EndPoints.ChallengeAI(), null, request.BuildBodyParams());
+            return API.Post<ChallengeResponse>(LichessApiConstants.EndPoints.OpenEndedChallenge(), null, request.BuildBodyParams());
+        }
+
+        /// <summary>
+        /// For administrators only. You are not allowed to use this endpoint. Use Create a challenge instead.
+        /// Create a challenge between any two players, without OAuth tokens.The challenge will be immediately accepted, and a game created.
+        /// <see href="https://lichess.org/api#operation/challengeCreateAdmin"/></see>
+        /// </summary>
+        /// <returns></returns>
+        public Task<ChallengeResponse> CreateAdminChallenge(string username1, string username2, ChallengeRequest request)
+        {
+            return API.Post<ChallengeResponse>(LichessApiConstants.EndPoints.CreateAdminChallenge(username1, username2), null, request.BuildBodyParams());
+        }
+
+        /// <summary>
+        /// Start the clocks of a game immediately, even if a player has not yet made a move.
+        /// Requires the OAuth tokens of both players with challenge:write scope.
+        /// If the clocks have already started, the call will have no effect.
+        /// <see href="https://lichess.org/api#operation/challengeStartClocks"/></see>
+        /// </summary>
+        /// <returns></returns>
+        public Task<OkResponse> StartClocks(string gameId, string token1, string token2)
+        {
+            var request = new StartClockRequest
+            {
+                Token1 = token1,
+                Token2 = token2
+            };
+
+            return API.Post<OkResponse>(LichessApiConstants.EndPoints.StartClocks(gameId), null, request.BuildBodyParams());
+
         }
 
         /// <summary>
         /// <see href=""/></see>
         /// </summary>
         /// <returns></returns>
-        public Task<bool> CreateAdminChallenge()
+        public Task<OkResponse> AddTimeToOpponentClock(string gameId, int seconds)
         {
-            throw new NotImplementedException();
-        }
+            seconds.ShouldBeLessThan(86401);
 
-        /// <summary>
-        /// <see href=""/></see>
-        /// </summary>
-        /// <returns></returns>
-        public Task<bool> StartClocks()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// <see href=""/></see>
-        /// </summary>
-        /// <returns></returns>
-        public Task<bool> AddTimeToOpponentClock()
-        {
-            throw new NotImplementedException();
+            return API.Post<OkResponse>(LichessApiConstants.EndPoints.AddTimeToOpponentClock(gameId, seconds.ToString()), null, null);
         }
 
     }
