@@ -18,10 +18,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="JetBrains.Annotations" PrivateAssets="All" />
-    <PackageReference Include="MartinCostello.Logging.XUnit" />
-    <PackageReference Include="Moq" />
-    <PackageReference Include="Shouldly" />
+    <PackageReference Include="JetBrains.Annotations" Version="2020.3.0" PrivateAssets="All" />
+    <PackageReference Include="MartinCostello.Logging.XUnit" Version="0.1.0"/>
+    <PackageReference Include="Moq" Version="4.16.0"/>
+    <PackageReference Include="Shouldly" Version="4.0.3"/>
   </ItemGroup>
 
   <ItemGroup>

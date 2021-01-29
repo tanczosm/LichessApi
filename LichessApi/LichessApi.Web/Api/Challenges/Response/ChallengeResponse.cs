@@ -34,7 +34,7 @@ namespace LichessApi.Web.Api.Challenges.Response
         public string Speed { get; set; }
 
         [Newtonsoft.Json.JsonProperty("perf", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public object Perf { get; set; }
+        public ChallengePerf Perf { get; set; }
 
         /// <summary>Games are rated and impact players ratings</summary>
         [Newtonsoft.Json.JsonProperty("rated", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]

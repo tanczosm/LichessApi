@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 
 namespace LichessApi.Web.Http
 {
@@ -49,5 +50,7 @@ namespace LichessApi.Web.Http
     public HttpMethod Method { get; set; }
 
     public object? Body { get; set; }
+
+    public CancellationToken CancellationToken { get; set; }
   }
 }

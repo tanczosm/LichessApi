@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net;
+using System.Threading;
 
 namespace LichessApi.Web.Http
 {
@@ -21,5 +22,6 @@ namespace LichessApi.Web.Http
     public HttpStatusCode StatusCode { get; set; }
 
     public string? ContentType { get; set; }
+
   }
 }

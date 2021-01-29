@@ -39,26 +39,32 @@ namespace LichessApi.Api.Challenges
         /// <returns></returns>
         public async IAsyncEnumerable<EventStreamResponse> StreamIncomingEvents([EnumeratorCancellation] CancellationToken token = default)
         {
-            // See https://www.tpeczek.com/2020/10/consuming-json-objects-stream-ndjson.html
-
-            var response = await API.SendRawRequest(LichessApiConstants.EndPoints.StreamIncomingEvents(), HttpMethod.Get).ConfigureAwait(false);
+            var response = await API.SendRawRequest(LichessApiConstants.EndPoints.StreamIncomingEvents(), HttpMethod.Get, token: token).ConfigureAwait(false);
             
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
-            {                
-                using (response.Body as Stream)
+            {
+                response.Body.ShouldNotBeNull();
+
+                await using (response.Body as Stream)
                 {
-                    using (StreamReader contentStreamReader = new StreamReader(response.Body as Stream))
+                    using (StreamReader contentStreamReader = new StreamReader(response.Body! as Stream))
                     {
                         while (!contentStreamReader.EndOfStream && !token.IsCancellationRequested)
                         {
                             // Generate new mock headers
 
-                            Response apiResponse = new Response (response.Headers.Select(dict => dict).ToDictionary(pair => pair.Key, pair => pair.Value)) { 
+                            Response apiResponse = new Response(response.Headers.Select(dict => dict)
+                                .ToDictionary(pair => pair.Key, pair => pair.Value))
+                            {
                                 Body = await contentStreamReader.ReadLineAsync()
                             };
                             apiResponse.ContentType = "application/json";
 
-                            yield return API.JSONSerializer.DeserializeResponse<EventStreamResponse>(apiResponse as IResponse).Body;
+                            if (String.IsNullOrEmpty(apiResponse.Body as string))
+                                continue;
+
+                            yield return API.JSONSerializer
+                                .DeserializeResponse<EventStreamResponse>(apiResponse).Body;
                         }
                     }
                 }
@@ -79,8 +85,8 @@ namespace LichessApi.Api.Challenges
         /// <returns></returns>
         public Task<Challenge> CreateChallenge(string opponentUsername, ChallengeRequest request)
         {
-            request.Days.ShouldBeGreaterThan(0);
-            request.Days.ShouldBeLessThan(16);
+            request.Days.ShouldBeGreaterThanOrEqualTo(1);
+            request.Days.ShouldBeLessThanOrEqualTo(15);
 
             return API.Post<Challenge>(LichessApiConstants.EndPoints.CreateChallenge(opponentUsername), null, request.BuildBodyParams());
         }
@@ -206,7 +212,7 @@ namespace LichessApi.Api.Challenges
         /// <returns></returns>
         public Task<OkResponse> AddTimeToOpponentClock(string gameId, int seconds)
         {
-            seconds.ShouldBeLessThan(86401);
+            seconds.ShouldBeLessThanOrEqualTo(86400);
 
             return API.Post<OkResponse>(LichessApiConstants.EndPoints.AddTimeToOpponentClock(gameId, seconds.ToString()), null, null);
         }

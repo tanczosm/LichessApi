@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace LichessApi.Web.Http
@@ -42,30 +43,31 @@ namespace LichessApi.Web.Http
                     .SendAsync(requestMsg, HttpCompletionOption.ResponseHeadersRead)
                     .ConfigureAwait(false);
 
-            return await BuildResponse(responseMsg).ConfigureAwait(false);
+            return await BuildResponse(responseMsg, request.CancellationToken).ConfigureAwait(false);
         }
 
-        private static async Task<IResponse> BuildResponse(HttpResponseMessage responseMsg)
+        private static async Task<IResponse> BuildResponse(HttpResponseMessage responseMsg, CancellationToken token = default)
         {
             Ensure.ArgumentNotNull(responseMsg, nameof(responseMsg));
 
-            using var content = responseMsg.Content;
+            // using var content? Watch for leaks
+            var content = responseMsg.Content;
             var headers = responseMsg.Headers.ToDictionary(header => header.Key, header => header.Value.First());
 
             var contentType = content.Headers?.ContentType?.MediaType;
 
-            bool isStream = contentType != null && contentType.Equals("application/x-ndjson", StringComparison.OrdinalIgnoreCase);
+            var isStream = contentType != null && contentType.Equals("application/x-ndjson", StringComparison.OrdinalIgnoreCase);
 
-            object body = isStream ?
-                await content.ReadAsStreamAsync().ConfigureAwait(false) :
-                await content.ReadAsStringAsync().ConfigureAwait(false);
-
-            return new Response(headers)
+            var response = new Response(headers)
             {
                 ContentType = contentType,
                 StatusCode = responseMsg.StatusCode,
-                Body = body
+                Body = isStream ?
+                    await content.ReadAsStreamAsync(token) :
+                    await content.ReadAsStringAsync(token).ConfigureAwait(false)
             };
+
+            return response;
         }
 
         private static HttpRequestMessage BuildRequestMessage(IRequest request)

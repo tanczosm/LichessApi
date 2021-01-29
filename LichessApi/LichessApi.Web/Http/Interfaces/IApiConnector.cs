@@ -2,6 +2,7 @@ using System.Net;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace LichessApi.Web.Http
@@ -51,7 +52,8 @@ namespace LichessApi.Web.Http
         HttpMethod method,
         IDictionary<string, string>? parameters = null,
         object? body = null,
-        IDictionary<string, string>? headers = null
+        IDictionary<string, string>? headers = null,
+        CancellationToken token = default
         );
 
     void SetRequestTimeout(TimeSpan timeout);

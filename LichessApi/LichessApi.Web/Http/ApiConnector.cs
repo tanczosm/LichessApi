@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Net;
+using System.Threading;
 
 namespace LichessApi.Web.Http
 {
@@ -169,7 +170,8 @@ namespace LichessApi.Web.Http
         HttpMethod method,
         IDictionary<string, string>? parameters,
         object? body,
-        IDictionary<string, string>? headers
+        IDictionary<string, string>? headers,
+        CancellationToken token = default
       )
     {
       Ensure.ArgumentNotNull(uri, nameof(uri));
@@ -182,7 +184,8 @@ namespace LichessApi.Web.Http
         headers ?? new Dictionary<string, string>(),
         parameters ?? new Dictionary<string, string>())
       {
-        Body = body
+        Body = body,
+        CancellationToken = token
       };
     }
 
@@ -226,10 +229,11 @@ namespace LichessApi.Web.Http
         HttpMethod method,
         IDictionary<string, string>? parameters = null,
         object? body = null,
-        IDictionary<string, string>? headers = null
+        IDictionary<string, string>? headers = null,
+        CancellationToken token = default
       )
     {
-      var request = CreateRequest(uri, method, parameters, body, headers);
+      var request = CreateRequest(uri, method, parameters, body, headers, token);
       return DoRequest(request);
     }
 

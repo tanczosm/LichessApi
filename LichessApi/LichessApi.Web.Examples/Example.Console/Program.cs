@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using LichessApi;
 using LichessApi.Web;
@@ -12,13 +13,16 @@ namespace Example.Console
         {
             LichessApiClient client = new LichessApiClient("abcdefghijklmnop");
 
-            //var email = await client.Account.GetEmailAddress();
-            //var isOk = await client.Account.SetMyKidModeStatus(false);
+            var email = await client.Account.GetEmailAddress();
+            var isOk = await client.Account.SetMyKidModeStatus(false);
 
-            await foreach (EventStreamResponse evt in client.Challenges.StreamIncomingEvents())
+            CancellationTokenSource cts = new CancellationTokenSource();
+
+            await foreach (EventStreamResponse evt in client.Challenges.StreamIncomingEvents(cts.Token))
             {
-                //
             }
+
+            System.Console.WriteLine("-- Finished --");
         }
     }
 }
