@@ -1,4 +1,4 @@
-﻿using LichessApi.Models;
+﻿using LichessApi.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +20,11 @@ namespace LichessApi.Web.Entities
         public bool Online { get; set; }
 
         [Newtonsoft.Json.JsonProperty("perfs", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public PerfType Perfs { get; set; }
+        public Performances Performances { get; set; }
 
         [Newtonsoft.Json.JsonProperty("createdAt", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long CreatedAt { get; set; }
+        [Newtonsoft.Json.JsonConverter(typeof(LichessApi.Web.Util.Converters.MillisecondEpochConverter))]
+        public DateTime CreatedAt { get; set; }
 
         [Newtonsoft.Json.JsonProperty("disabled", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool Disabled { get; set; }
@@ -38,7 +39,8 @@ namespace LichessApi.Web.Entities
         public Profile Profile { get; set; }
 
         [Newtonsoft.Json.JsonProperty("seenAt", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long SeenAt { get; set; }
+        [Newtonsoft.Json.JsonConverter(typeof(LichessApi.Web.Util.Converters.MillisecondEpochConverter))]
+        public DateTime SeenAt { get; set; }
 
         [Newtonsoft.Json.JsonProperty("patron", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool Patron { get; set; }

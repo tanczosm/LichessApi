@@ -1,38 +1,24 @@
-﻿using LichessApi.Models;
+﻿using LichessApi.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LichessApi.Api.Challenges.Request;
-using LichessApi.Web;
-using LichessApi.Web.Api.Challenges.Response;
-using LichessApi.Api.Account.Response;
 using LichessApi.Web.Api.Challenges.Request;
+using LichessApi.Web.Api.Challenges.Response;
 using LichessApi.Web.Entities.Enum;
 using Shouldly;
 using System.Net.Http;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Threading;
-using LichessApi.Web.Http;
+using LichessApi.Web.Api.Account.Response;
+using LichessApi.Web.Entities;
 
-namespace LichessApi.Api.Challenges
+namespace LichessApi.Web.Api.Challenges
 {
-    public class Challenges : ApiBase
+    public class Challenges : ApiBase, IChallenges
     {
-        /*
-        public static Uri CreateChallenge(string username) => EUri($"/api/challenge/{username}");
-        public static Uri AcceptChallenge(string challengeId) => EUri($"/api/challenge/{challengeId}/accept");
-        public static Uri DeclineChallenge(string challengeId) => EUri($"/api/challenge/{challengeId}/decline");
-        public static Uri CancelChallenge(string challengeId) => EUri($"/api/challenge/{challengeId}/cancel");
-        public static Uri ChallengeAI() => EUri($"/api/challenge/ai");
-        public static Uri OpenEndedChallenge() => EUri($"/api/challenge/open");
-        public static Uri StartClocks(string gameId) => EUri($"/api/challenge/{gameId}/start-clocks");
-        public static Uri AddTimeToOpponentClock(string gameId, string seconds) => EUri($"/api/round/{gameId}/add-time/{seconds}");
-        public static Uri CreateAdminChallenge(string orig, string dest) => EUri($"/api/challenge/admin/{orig}/{dest}");
-        */
-
         /// <summary>
         /// <see href=""/></see>
         /// </summary>
@@ -40,37 +26,11 @@ namespace LichessApi.Api.Challenges
         public async IAsyncEnumerable<EventStreamResponse> StreamIncomingEvents([EnumeratorCancellation] CancellationToken token = default)
         {
             var response = await API.SendRawRequest(LichessApiConstants.EndPoints.StreamIncomingEvents(), HttpMethod.Get, token: token).ConfigureAwait(false);
-            
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+
+            await foreach (var o in StreamNdJson<EventStreamResponse>(response, token))
             {
-                response.Body.ShouldNotBeNull();
-
-                await using (response.Body as Stream)
-                {
-                    using (StreamReader contentStreamReader = new StreamReader(response.Body! as Stream))
-                    {
-                        while (!contentStreamReader.EndOfStream && !token.IsCancellationRequested)
-                        {
-                            // Generate new mock headers
-
-                            Response apiResponse = new Response(response.Headers.Select(dict => dict)
-                                .ToDictionary(pair => pair.Key, pair => pair.Value))
-                            {
-                                Body = await contentStreamReader.ReadLineAsync()
-                            };
-                            apiResponse.ContentType = "application/json";
-
-                            if (String.IsNullOrEmpty(apiResponse.Body as string))
-                                continue;
-
-                            yield return API.JSONSerializer
-                                .DeserializeResponse<EventStreamResponse>(apiResponse).Body;
-                        }
-                    }
-                }
+                yield return o;
             }
-
-            yield break;
         }
 
         /// <summary>
@@ -154,9 +114,9 @@ namespace LichessApi.Api.Challenges
         /// <see href="https://lichess.org/api#operation/challengeAi"/></see>
         /// </summary>
         /// <returns></returns>
-        public Task<ChallengeAIResponse> ChallengeAI(ChallengeAIRequest request)  
+        public Task<Game> ChallengeAI(ChallengeAIRequest request)  
         {
-            return API.Post<ChallengeAIResponse>(LichessApiConstants.EndPoints.ChallengeAI(), null, request.BuildBodyParams());
+            return API.Post<Game>(LichessApiConstants.EndPoints.ChallengeAI(), null, request.BuildBodyParams());
         }
 
         /// <summary>

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LichessApi.Api.ArenaTournaments.Request
+namespace LichessApi.Web.Api.ArenaTournaments.Request
 {
     public class ArenaTournamentRequest
     {

@@ -1,4 +1,4 @@
-﻿using LichessApi.Models;
+﻿using LichessApi.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,13 +6,13 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using RestSharp;
-using LichessApi.Api.Account.Response;
+using LichessApi.Web.Api.Account.Response;
 using LichessApi.Web.Api.Account.Request;
 using LichessApi.Web.Entities;
 
-namespace LichessApi.Api.Account
+namespace LichessApi.Web.Api.Account
 {
-    public class Account : ApiBase
+    public class Account : ApiBase, IAccount
     {
         /// <summary>
         /// Public informations about the logged in user.

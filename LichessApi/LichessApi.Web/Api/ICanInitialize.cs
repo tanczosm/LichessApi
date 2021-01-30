@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using LichessApi.Web.Http;
 
-namespace LichessApi.Api
+namespace LichessApi.Web.Api
 {
     interface ICanInitialize
     {

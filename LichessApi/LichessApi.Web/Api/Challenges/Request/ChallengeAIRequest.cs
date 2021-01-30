@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using LichessApi.Web;
 
-namespace LichessApi.Api.Challenges.Request
+namespace LichessApi.Web.Api.Challenges.Request
 {
     public partial class ChallengeAIRequest : RequestParams
     {

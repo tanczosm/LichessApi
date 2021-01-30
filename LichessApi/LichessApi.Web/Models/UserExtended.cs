@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LichessApi.Models
+namespace LichessApi.Web.Models
 {
     public partial class UserExtended : User
     {

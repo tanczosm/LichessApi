@@ -1,11 +1,11 @@
-﻿using LichessApi.Models;
+﻿using LichessApi.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LichessApi.Api.Users
+namespace LichessApi.Web.Api.Users
 {
     public class Users : ApiBase
     {

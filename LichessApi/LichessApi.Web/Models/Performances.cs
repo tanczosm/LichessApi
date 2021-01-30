@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LichessApi.Models
+namespace LichessApi.Web.Models
 {
-    public partial class PerfType
+    public partial class Performances
     {
         [Newtonsoft.Json.JsonProperty("chess960", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Perf Chess960 { get; set; }

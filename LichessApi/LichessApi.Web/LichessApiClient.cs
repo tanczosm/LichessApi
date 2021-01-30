@@ -1,21 +1,21 @@
-﻿using LichessApi.Api;
-using LichessApi.Api.Account;
-using LichessApi.Api.Analysis;
-using LichessApi.Api.ArenaTournaments;
-using LichessApi.Api.Board;
-using LichessApi.Api.Bot;
-using LichessApi.Api.Broadcasts;
-using LichessApi.Api.Challenges;
-using LichessApi.Api.Games;
-using LichessApi.Api.Messaging;
-using LichessApi.Api.Puzzles;
-using LichessApi.Api.Relations;
-using LichessApi.Api.Simuls;
-using LichessApi.Api.Studies;
-using LichessApi.Api.SwissTournaments;
-using LichessApi.Api.Teams;
-using LichessApi.Api.Users;
-using LichessApi.Models;
+﻿using LichessApi.Web.Api;
+using LichessApi.Web.Api.Account;
+using LichessApi.Web.Api.Analysis;
+using LichessApi.Web.Api.ArenaTournaments;
+using LichessApi.Web.Api.Board;
+using LichessApi.Web.Api.Bot;
+using LichessApi.Web.Api.Broadcasts;
+using LichessApi.Web.Api.Challenges;
+using LichessApi.Web.Api.Games;
+using LichessApi.Web.Api.Messaging;
+using LichessApi.Web.Api.Puzzles;
+using LichessApi.Web.Api.Relations;
+using LichessApi.Web.Api.Simuls;
+using LichessApi.Web.Api.Studies;
+using LichessApi.Web.Api.SwissTournaments;
+using LichessApi.Web.Api.Teams;
+using LichessApi.Web.Api.Users;
+using LichessApi.Web.Models;
 using System;
 using System.Collections.Generic;
 using LichessApi.Web;
@@ -23,7 +23,7 @@ using LichessApi.Web.Http;
 
 namespace LichessApi
 {
-    public class LichessApiClient
+    public class LichessApiClient : ILichessApiClient
     {
         // Object cache to store api objects
         private Dictionary<Type, object> Areas = new Dictionary<Type, object>();
@@ -62,22 +62,22 @@ namespace LichessApi
         }
 
         // Apis
-        public Account Account { get { return GetArea<Account>(); } }
-        public Analysis Analysis { get { return GetArea<Analysis>(); } }
-        public ArenaTournaments ArenaTournaments { get { return GetArea<ArenaTournaments>(); } }
-        public Board Board { get { return GetArea<Board>(); } }
-        public Bot Bot { get { return GetArea<Bot>(); } }
-        public Broadcasts Broadcasts { get { return GetArea<Broadcasts>(); } }
-        public Challenges Challenges { get { return GetArea<Challenges>(); } }
-        public Games Games { get { return GetArea<Games>(); } }
-        public Messaging Messaging { get { return GetArea<Messaging>(); } }
-        public Puzzles Puzzles { get { return GetArea<Puzzles>(); } }
-        public Relations Relations { get { return GetArea<Relations>(); } }
-        public Simuls Simuls { get { return GetArea<Simuls>(); } }
-        public Studies Studies { get { return GetArea<Studies>(); } }
-        public SwissTournaments SwissTournaments { get { return GetArea<SwissTournaments>(); } }
-        public Teams Teams { get { return GetArea<Teams>(); } }
-        public Users Users { get { return GetArea<Users>(); } }
+        public IAccount Account { get { return (IAccount)GetArea<Account>(); } }
+        public IAnalysis Analysis { get { return (IAnalysis)GetArea<Analysis>(); } }
+        public IArenaTournaments ArenaTournaments { get { return (IArenaTournaments)GetArea<ArenaTournaments>(); } }
+        public IBoard Board { get { return (IBoard)GetArea<Board>(); } }
+        public IBot Bot { get { return (IBot)GetArea<Bot>(); } }
+        public IBroadcasts Broadcasts { get { return (IBroadcasts)GetArea<Broadcasts>(); } }
+        public IChallenges Challenges { get { return (IChallenges)GetArea<Challenges>(); } }
+        public IGames Games { get { return (IGames)GetArea<Games>(); } }
+        public IMessaging Messaging { get { return (IMessaging)GetArea<Messaging>(); } }
+        public IPuzzles Puzzles { get { return (IPuzzles)GetArea<Puzzles>(); } }
+        public IRelations Relations { get { return (IRelations)GetArea<Relations>(); } }
+        public ISimuls Simuls { get { return (ISimuls)GetArea<Simuls>(); } }
+        public IStudies Studies { get { return (IStudies)GetArea<Studies>(); } }
+        public ISwissTournaments SwissTournaments { get { return (ISwissTournaments)GetArea<SwissTournaments>(); } }
+        public ITeams Teams { get { return (ITeams)GetArea<Teams>(); } }
+        public IUsers Users { get { return (IUsers)GetArea<Users>(); } }
         public IResponse? LastResponse { get; private set; }
 
         /// <summary>

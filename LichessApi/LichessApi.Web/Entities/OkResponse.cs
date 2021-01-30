@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LichessApi.Api.Account.Response
+namespace LichessApi.Web.Entities
 {
     public class OkResponse
     {

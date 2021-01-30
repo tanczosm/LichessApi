@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace LichessApi.Web.Entities.Enum
 {
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum GameVariant
     {
         [System.Runtime.Serialization.EnumMember(Value = @"standard")]

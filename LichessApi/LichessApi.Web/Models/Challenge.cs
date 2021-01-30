@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using LichessApi.Web.Entities.Enum;
 
-namespace LichessApi.Models
+namespace LichessApi.Web.Models
 {
     public partial class Challenge
     {
