@@ -147,7 +147,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
+Michael Tanczos
 
 Project Link: [https://github.com/tanczosm/LichessApi](https://github.com/tanczosm/LichessApi)
 
@@ -156,7 +156,7 @@ Project Link: [https://github.com/tanczosm/LichessApi](https://github.com/tanczo
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
-* []()
+* [https://github.com/JohnnyCrazy/SpotifyAPI-NET](SpotifyAPI-NET)
 * []()
 * []()
 
@@ -167,14 +167,14 @@ Project Link: [https://github.com/tanczosm/LichessApi](https://github.com/tanczo
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/tanczosm/repo.svg?style=for-the-badge
-[contributors-url]: https://github.com/tanczosm/repo/graphs/contributors
+[contributors-url]: https://github.com/tanczosm/LichessApi/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/tanczosm/repo.svg?style=for-the-badge
-[forks-url]: https://github.com/tanczosm/repo/network/members
+[forks-url]: https://github.com/tanczosm/LichessApi/network/members
 [stars-shield]: https://img.shields.io/github/stars/tanczosm/repo.svg?style=for-the-badge
-[stars-url]: https://github.com/tanczosm/repo/stargazers
+[stars-url]: https://github.com/tanczosm/LichessApi/stargazers
 [issues-shield]: https://img.shields.io/github/issues/tanczosm/repo.svg?style=for-the-badge
-[issues-url]: https://github.com/tanczosm/repo/issues
+[issues-url]: https://github.com/tanczosm/LichessApi/issues
 [license-shield]: https://img.shields.io/github/license/tanczosm/repo.svg?style=for-the-badge
-[license-url]: https://github.com/tanczosm/repo/blob/master/LICENSE.txt
+[license-url]: https://github.com/tanczosm/LichessApi/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/tanczosm
