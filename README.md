@@ -1,11 +1,5 @@
 <!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -25,7 +19,7 @@
   <h3 align="center">Lichess .Net Api Client</h3>
 
   <p align="center">
-    project_description
+    Lichess is a free and open-source Internet chess server run by a non-profit organization of the same name. This project implements a .Net client for the Lichess Api.
     <br />
     <a href="https://github.com/tanczosm/LichessApi"><strong>Explore the docs »</strong></a>
     <br />
@@ -36,6 +30,7 @@
     ·
     <a href="https://github.com/tanczosm/LichessApi/issues">Request Feature</a>
   </p>
+
 </p>
 
 
@@ -74,13 +69,15 @@
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 
-### Built With
+### Features
 
-* []()
-* []()
-* []()
+* Easy integration with OAuth2 
 
+* Token Auth session compatible
 
+* Well-typed data structures for all responses and requests
+
+  
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -190,6 +187,8 @@ Project Link: [https://github.com/tanczosm/LichessApi](https://github.com/tanczo
 ## Acknowledgements
 
 * [https://github.com/JohnnyCrazy/SpotifyAPI-NET](SpotifyAPI-NET)
+
+* [https://lichess.org/api](Api Documentation)
 
 
 
