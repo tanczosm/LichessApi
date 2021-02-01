@@ -187,8 +187,8 @@ Project Link: [https://github.com/tanczosm/LichessApi](https://github.com/tanczo
 
 ## Acknowledgements
 
-* [https://github.com/JohnnyCrazy/SpotifyAPI-NET](SpotifyAPI-NET)
-* [https://lichess.org/api](Lichess Api Documentation) 
+* [SpotifyAPI-NET](https://github.com/JohnnyCrazy/SpotifyAPI-NET)
+* [Lichess Api Documentation](https://lichess.org/api)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
