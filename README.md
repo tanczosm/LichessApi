@@ -1,11 +1,5 @@
 <!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -25,7 +19,7 @@
   <h3 align="center">Lichess .Net Api Client</h3>
 
   <p align="center">
-    project_description
+    Lichess is a free and open-source Internet chess server run by a non-profit organization of the same name. This project implements a .Net client for the Lichess Api.
     <br />
     <a href="https://github.com/tanczosm/LichessApi"><strong>Explore the docs »</strong></a>
     <br />
@@ -36,6 +30,7 @@
     ·
     <a href="https://github.com/tanczosm/LichessApi/issues">Request Feature</a>
   </p>
+
 </p>
 
 
@@ -74,13 +69,15 @@
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 
-### Built With
+### Features
 
-* []()
-* []()
-* []()
+* Easy integration with OAuth2 
 
+* Token Auth session compatible
 
+* Well-typed data structures for all responses and requests
+
+  
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -111,17 +108,50 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+```csharp
+using System;
+using LichessApi.Web;
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+class Program
+{
+    static async Task Main()
+    {
+      var client = new LichessApiClient("YourAccessToken");
+
+      var email = await client.Account.GetEmailAddress();
+	  
+      Console.WriteLine(email);
+    }
+}
+```
+
+More examples can be found in the `LichessApi.Web.Examples` directory.
 
 
 
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/tanczosm/LichessApi/issues) for a list of proposed features (and known issues).
+The following Api areas have been completed so far:
 
+- [x] Authentication
+- [x] Account
+- [ ] Users
+- [ ] Relations
+- [x] Games
+- [ ] Puzzles
+- [ ] Teams
+- [ ] Board
+- [ ] Bot
+- [x] Challenges
+- [ ] Arena Tournaments
+- [ ] Swiss Tournaments
+- [ ] Simuls
+- [ ] Studies
+- [ ] Messaging
+- [ ] Broadcasts
+- [ ] Analysis
+- [ ] Opening Explorer
 
 
 <!-- CONTRIBUTING -->
@@ -147,7 +177,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
+Michael Tanczos
 
 Project Link: [https://github.com/tanczosm/LichessApi](https://github.com/tanczosm/LichessApi)
 
@@ -156,25 +186,24 @@ Project Link: [https://github.com/tanczosm/LichessApi](https://github.com/tanczo
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
-* []()
-* []()
-* []()
+* [https://github.com/JohnnyCrazy/SpotifyAPI-NET](SpotifyAPI-NET)
 
+* [https://lichess.org/api](Api Documentation)
 
 
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/tanczosm/repo.svg?style=for-the-badge
-[contributors-url]: https://github.com/tanczosm/repo/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/tanczosm/repo.svg?style=for-the-badge
-[forks-url]: https://github.com/tanczosm/repo/network/members
-[stars-shield]: https://img.shields.io/github/stars/tanczosm/repo.svg?style=for-the-badge
-[stars-url]: https://github.com/tanczosm/repo/stargazers
-[issues-shield]: https://img.shields.io/github/issues/tanczosm/repo.svg?style=for-the-badge
-[issues-url]: https://github.com/tanczosm/repo/issues
-[license-shield]: https://img.shields.io/github/license/tanczosm/repo.svg?style=for-the-badge
-[license-url]: https://github.com/tanczosm/repo/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/tanczosm/LichessApi.svg?style=for-the-badge
+[contributors-url]: https://github.com/tanczosm/LichessApi/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/tanczosm/LichessApi.svg?style=for-the-badge
+[forks-url]: https://github.com/tanczosm/LichessApi/network/members
+[stars-shield]: https://img.shields.io/github/stars/tanczosm/LichessApi.svg?style=for-the-badge
+[stars-url]: https://github.com/tanczosm/LichessApi/stargazers
+[issues-shield]: https://img.shields.io/github/issues/tanczosm/LichessApi.svg?style=for-the-badge
+[issues-url]: https://github.com/tanczosm/LichessApi/issues
+[license-shield]: https://img.shields.io/github/license/tanczosm/LichessApi.svg?style=for-the-badge
+[license-url]: https://github.com/tanczosm/LichessApi/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/tanczosm
+[linkedin-url]: https://linkedin.com/in/michael-tanczos-4aa7b62a
