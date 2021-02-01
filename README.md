@@ -111,17 +111,50 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+```csharp
+using System;
+using LichessApi.Web;
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+class Program
+{
+    static async Task Main()
+    {
+      var client = new LichessApiClient("YourAccessToken");
+
+      var email = await client.Account.GetEmailAddress();
+	  
+      Console.WriteLine(email);
+    }
+}
+```
+
+More examples can be found in the `LichessApi.Web.Examples` directory.
 
 
 
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/tanczosm/LichessApi/issues) for a list of proposed features (and known issues).
+The following Api areas have been completed so far:
 
+- [x] Authentication
+- [x] Account
+- [ ] Users
+- [ ] Relations
+- [x] Games
+- [ ] Puzzles
+- [ ] Teams
+- [ ] Board
+- [ ] Bot
+- [x] Challenges
+- [ ] Arena Tournaments
+- [ ] Swiss Tournaments
+- [ ] Simuls
+- [ ] Studies
+- [ ] Messaging
+- [ ] Broadcasts
+- [ ] Analysis
+- [ ] Opening Explorer
 
 
 <!-- CONTRIBUTING -->
