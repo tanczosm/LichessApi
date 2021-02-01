@@ -92,17 +92,13 @@ This is an example of how to list things you need to use the software and how to
   npm install npm@latest -g
   ```
 
-### Installation
+### Getting Started
 
-1. Clone the repo
-   ```sh
-   git clone https://github.com/tanczosm/LichessApi.git
-   ```
-2. Install NPM packages
-   ```sh
-   npm install
-   ```
+LichessApi is an API client library for .NET and is available on NuGet:
 
+```
+Install-Package LichessApi
+```
 
 
 <!-- USAGE EXAMPLES -->
