@@ -184,17 +184,15 @@ Project Link: [https://github.com/tanczosm/LichessApi](https://github.com/tanczo
 
 
 <!-- ACKNOWLEDGEMENTS -->
+
 ## Acknowledgements
 
 * [https://github.com/JohnnyCrazy/SpotifyAPI-NET](SpotifyAPI-NET)
-
-* [https://lichess.org/api](Api Documentation)
-
-
-
+* [https://lichess.org/api](Lichess Api Documentation) 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
 [contributors-shield]: https://img.shields.io/github/contributors/tanczosm/LichessApi.svg?style=for-the-badge
 [contributors-url]: https://github.com/tanczosm/LichessApi/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/tanczosm/LichessApi.svg?style=for-the-badge
