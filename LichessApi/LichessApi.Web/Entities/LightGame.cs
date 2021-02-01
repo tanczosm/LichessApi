@@ -12,11 +12,5 @@ namespace LichessApi.Web.Entities
     {
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
-
-        /*
-        public ??? WhitePlayer { get; set; }
-        public ??? BlackPlayer { get; set; }
-        public GameStatus Status { get; set; }
-        */
     }
 }

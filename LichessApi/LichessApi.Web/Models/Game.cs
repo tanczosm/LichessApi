@@ -34,9 +34,9 @@ namespace LichessApi.Web.Models
         [Newtonsoft.Json.JsonConverter(typeof(LichessApi.Web.Util.Converters.MillisecondEpochConverter))]
         public DateTime LastMoveAt { get; set; }
 
+        // Stream current games shows a possible numeric status, most line up to the GameStatus enum
         [Newtonsoft.Json.JsonProperty("status", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [Newtonsoft.Json.JsonConverter(typeof(LichessApi.Web.Util.Converters.MillisecondEpochConverter))]
-        public GameStatus Status { get; set; }
+        public string Status { get; set; }
 
         [Newtonsoft.Json.JsonProperty("players", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public GamePlayers Players { get; set; }

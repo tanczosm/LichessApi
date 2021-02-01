@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LichessApi.Web.Entities;
+using LichessApi.Web.Entities.Enum;
 
 namespace LichessApi.Web.Models
 {
@@ -33,5 +34,7 @@ namespace LichessApi.Web.Models
         [Newtonsoft.Json.JsonProperty("team", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Team { get; set; }
 
+        [Newtonsoft.Json.JsonProperty("color", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public Color Color { get; set; }
     }
 }
