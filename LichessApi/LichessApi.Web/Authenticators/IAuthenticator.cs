@@ -3,8 +3,8 @@ using LichessApi.Web.Http;
 
 namespace LichessApi.Web
 {
-  public interface IAuthenticator
-  {
-    Task Apply(IRequest request, IApiConnector apiConnector);
-  }
+    public interface IAuthenticator
+    {
+        Task Apply(IRequest request, IApiConnector apiConnector);
+    }
 }

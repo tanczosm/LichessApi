@@ -7,275 +7,275 @@ using System.Threading;
 
 namespace LichessApi.Web.Http
 {
-  public class ApiConnector : IApiConnector
-  {
-    private readonly Uri _baseAddress;
-    private readonly IAuthenticator? _authenticator;
-    private readonly IJSONSerializer _jsonSerializer;
-    private readonly IHTTPClient _httpClient;
-    private readonly IHTTPLogger? _httpLogger;
-
-    public event EventHandler<IResponse>? ResponseReceived;
-
-    public ApiConnector(Uri baseAddress, IAuthenticator authenticator) :
-      this(baseAddress, authenticator, new NewtonsoftJSONSerializer(), new NetHttpClient(), null)
-    { }
-    public ApiConnector(
-      Uri baseAddress,
-      IAuthenticator? authenticator,
-      IJSONSerializer jsonSerializer,
-      IHTTPClient httpClient,
-      IHTTPLogger? httpLogger)
+    public class ApiConnector : IApiConnector
     {
-      _baseAddress = baseAddress;
-      _authenticator = authenticator;
-      _jsonSerializer = jsonSerializer;
-      _httpClient = httpClient;
-      _httpLogger = httpLogger;
-    }
+        private readonly Uri _baseAddress;
+        private readonly IAuthenticator? _authenticator;
+        private readonly IJSONSerializer _jsonSerializer;
+        private readonly IHTTPClient _httpClient;
+        private readonly IHTTPLogger? _httpLogger;
 
-    public IJSONSerializer JSONSerializer { get { return _jsonSerializer; } }
+        public event EventHandler<IResponse>? ResponseReceived;
 
-    public Task<T> Delete<T>(Uri uri)
-    {
-      Ensure.ArgumentNotNull(uri, nameof(uri));
+        public ApiConnector(Uri baseAddress, IAuthenticator authenticator) :
+          this(baseAddress, authenticator, new NewtonsoftJSONSerializer(), new NetHttpClient(), null)
+        { }
+        public ApiConnector(
+          Uri baseAddress,
+          IAuthenticator? authenticator,
+          IJSONSerializer jsonSerializer,
+          IHTTPClient httpClient,
+          IHTTPLogger? httpLogger)
+        {
+            _baseAddress = baseAddress;
+            _authenticator = authenticator;
+            _jsonSerializer = jsonSerializer;
+            _httpClient = httpClient;
+            _httpLogger = httpLogger;
+        }
 
-      return SendAPIRequest<T>(uri, HttpMethod.Delete);
-    }
+        public IJSONSerializer JSONSerializer { get { return _jsonSerializer; } }
 
-    public Task<T> Delete<T>(Uri uri, IDictionary<string, string>? parameters)
-    {
-      Ensure.ArgumentNotNull(uri, nameof(uri));
+        public Task<T> Delete<T>(Uri uri)
+        {
+            Ensure.ArgumentNotNull(uri, nameof(uri));
 
-      return SendAPIRequest<T>(uri, HttpMethod.Delete, parameters);
-    }
+            return SendAPIRequest<T>(uri, HttpMethod.Delete);
+        }
 
-    public Task<T> Delete<T>(Uri uri, IDictionary<string, string>? parameters, object? body)
-    {
-      Ensure.ArgumentNotNull(uri, nameof(uri));
+        public Task<T> Delete<T>(Uri uri, IDictionary<string, string>? parameters)
+        {
+            Ensure.ArgumentNotNull(uri, nameof(uri));
 
-      return SendAPIRequest<T>(uri, HttpMethod.Delete, parameters, body);
-    }
+            return SendAPIRequest<T>(uri, HttpMethod.Delete, parameters);
+        }
 
-    public async Task<HttpStatusCode> Delete(Uri uri, IDictionary<string, string>? parameters, object? body)
-    {
-      Ensure.ArgumentNotNull(uri, nameof(uri));
+        public Task<T> Delete<T>(Uri uri, IDictionary<string, string>? parameters, object? body)
+        {
+            Ensure.ArgumentNotNull(uri, nameof(uri));
 
-      var response = await SendAPIRequestDetailed(uri, HttpMethod.Delete, parameters, body).ConfigureAwait(false);
-      return response.StatusCode;
-    }
+            return SendAPIRequest<T>(uri, HttpMethod.Delete, parameters, body);
+        }
 
-    public Task<T> Get<T>(Uri uri)
-    {
-      Ensure.ArgumentNotNull(uri, nameof(uri));
+        public async Task<HttpStatusCode> Delete(Uri uri, IDictionary<string, string>? parameters, object? body)
+        {
+            Ensure.ArgumentNotNull(uri, nameof(uri));
 
-      return SendAPIRequest<T>(uri, HttpMethod.Get);
-    }
+            var response = await SendAPIRequestDetailed(uri, HttpMethod.Delete, parameters, body).ConfigureAwait(false);
+            return response.StatusCode;
+        }
 
-    public Task<T> Get<T>(Uri uri, IDictionary<string, string>? parameters)
-    {
-      Ensure.ArgumentNotNull(uri, nameof(uri));
+        public Task<T> Get<T>(Uri uri)
+        {
+            Ensure.ArgumentNotNull(uri, nameof(uri));
 
-      return SendAPIRequest<T>(uri, HttpMethod.Get, parameters);
-    }
+            return SendAPIRequest<T>(uri, HttpMethod.Get);
+        }
 
-    public async Task<HttpStatusCode> Get(Uri uri, IDictionary<string, string>? parameters, object? body)
-    {
-      Ensure.ArgumentNotNull(uri, nameof(uri));
+        public Task<T> Get<T>(Uri uri, IDictionary<string, string>? parameters)
+        {
+            Ensure.ArgumentNotNull(uri, nameof(uri));
 
-      var response = await SendAPIRequestDetailed(uri, HttpMethod.Get, parameters, body).ConfigureAwait(false);
-      return response.StatusCode;
-    }
+            return SendAPIRequest<T>(uri, HttpMethod.Get, parameters);
+        }
 
-    public Task<T> Post<T>(Uri uri)
-    {
-      Ensure.ArgumentNotNull(uri, nameof(uri));
+        public async Task<HttpStatusCode> Get(Uri uri, IDictionary<string, string>? parameters, object? body)
+        {
+            Ensure.ArgumentNotNull(uri, nameof(uri));
 
-      return SendAPIRequest<T>(uri, HttpMethod.Post);
-    }
+            var response = await SendAPIRequestDetailed(uri, HttpMethod.Get, parameters, body).ConfigureAwait(false);
+            return response.StatusCode;
+        }
 
-    public Task<T> Post<T>(Uri uri, IDictionary<string, string>? parameters)
-    {
-      Ensure.ArgumentNotNull(uri, nameof(uri));
+        public Task<T> Post<T>(Uri uri)
+        {
+            Ensure.ArgumentNotNull(uri, nameof(uri));
 
-      return SendAPIRequest<T>(uri, HttpMethod.Post, parameters);
-    }
+            return SendAPIRequest<T>(uri, HttpMethod.Post);
+        }
 
-    public Task<T> Post<T>(Uri uri, IDictionary<string, string>? parameters, object? body)
-    {
-      Ensure.ArgumentNotNull(uri, nameof(uri));
+        public Task<T> Post<T>(Uri uri, IDictionary<string, string>? parameters)
+        {
+            Ensure.ArgumentNotNull(uri, nameof(uri));
 
-      return SendAPIRequest<T>(uri, HttpMethod.Post, parameters, body);
-    }
+            return SendAPIRequest<T>(uri, HttpMethod.Post, parameters);
+        }
 
-    public Task<T> Post<T>(Uri uri, IDictionary<string, string>? parameters, object? body, Dictionary<string, string>? headers)
-    {
-      Ensure.ArgumentNotNull(uri, nameof(uri));
+        public Task<T> Post<T>(Uri uri, IDictionary<string, string>? parameters, object? body)
+        {
+            Ensure.ArgumentNotNull(uri, nameof(uri));
 
-      return SendAPIRequest<T>(uri, HttpMethod.Post, parameters, body, headers);
-    }
+            return SendAPIRequest<T>(uri, HttpMethod.Post, parameters, body);
+        }
 
-    public async Task<HttpStatusCode> Post(Uri uri, IDictionary<string, string>? parameters, object? body)
-    {
-      Ensure.ArgumentNotNull(uri, nameof(uri));
+        public Task<T> Post<T>(Uri uri, IDictionary<string, string>? parameters, object? body, Dictionary<string, string>? headers)
+        {
+            Ensure.ArgumentNotNull(uri, nameof(uri));
 
-      var response = await SendAPIRequestDetailed(uri, HttpMethod.Post, parameters, body).ConfigureAwait(false);
-      return response.StatusCode;
-    }
+            return SendAPIRequest<T>(uri, HttpMethod.Post, parameters, body, headers);
+        }
 
-    public Task<T> Put<T>(Uri uri)
-    {
-      Ensure.ArgumentNotNull(uri, nameof(uri));
+        public async Task<HttpStatusCode> Post(Uri uri, IDictionary<string, string>? parameters, object? body)
+        {
+            Ensure.ArgumentNotNull(uri, nameof(uri));
 
-      return SendAPIRequest<T>(uri, HttpMethod.Put);
-    }
+            var response = await SendAPIRequestDetailed(uri, HttpMethod.Post, parameters, body).ConfigureAwait(false);
+            return response.StatusCode;
+        }
 
-    public Task<T> Put<T>(Uri uri, IDictionary<string, string>? parameters)
-    {
-      Ensure.ArgumentNotNull(uri, nameof(uri));
+        public Task<T> Put<T>(Uri uri)
+        {
+            Ensure.ArgumentNotNull(uri, nameof(uri));
 
-      return SendAPIRequest<T>(uri, HttpMethod.Put, parameters);
-    }
+            return SendAPIRequest<T>(uri, HttpMethod.Put);
+        }
 
-    public Task<T> Put<T>(Uri uri, IDictionary<string, string>? parameters, object? body)
-    {
-      Ensure.ArgumentNotNull(uri, nameof(uri));
+        public Task<T> Put<T>(Uri uri, IDictionary<string, string>? parameters)
+        {
+            Ensure.ArgumentNotNull(uri, nameof(uri));
 
-      return SendAPIRequest<T>(uri, HttpMethod.Put, parameters, body);
-    }
+            return SendAPIRequest<T>(uri, HttpMethod.Put, parameters);
+        }
 
-    public async Task<HttpStatusCode> Put(Uri uri, IDictionary<string, string>? parameters, object? body)
-    {
-      Ensure.ArgumentNotNull(uri, nameof(uri));
+        public Task<T> Put<T>(Uri uri, IDictionary<string, string>? parameters, object? body)
+        {
+            Ensure.ArgumentNotNull(uri, nameof(uri));
 
-      var response = await SendAPIRequestDetailed(uri, HttpMethod.Put, parameters, body).ConfigureAwait(false);
-      return response.StatusCode;
-    }
+            return SendAPIRequest<T>(uri, HttpMethod.Put, parameters, body);
+        }
 
-    public async Task<HttpStatusCode> PutRaw(Uri uri, IDictionary<string, string>? parameters, object? body)
-    {
-      Ensure.ArgumentNotNull(uri, nameof(uri));
+        public async Task<HttpStatusCode> Put(Uri uri, IDictionary<string, string>? parameters, object? body)
+        {
+            Ensure.ArgumentNotNull(uri, nameof(uri));
 
-      var response = await SendRawRequest(uri, HttpMethod.Put, parameters, body).ConfigureAwait(false);
-      return response.StatusCode;
-    }
+            var response = await SendAPIRequestDetailed(uri, HttpMethod.Put, parameters, body).ConfigureAwait(false);
+            return response.StatusCode;
+        }
 
-    public void SetRequestTimeout(TimeSpan timeout)
-    {
-      _httpClient.SetRequestTimeout(timeout);
-    }
+        public async Task<HttpStatusCode> PutRaw(Uri uri, IDictionary<string, string>? parameters, object? body)
+        {
+            Ensure.ArgumentNotNull(uri, nameof(uri));
 
-    private IRequest CreateRequest(
-        Uri uri,
-        HttpMethod method,
-        IDictionary<string, string>? parameters,
-        object? body,
-        IDictionary<string, string>? headers,
-        CancellationToken token = default
-      )
-    {
-      Ensure.ArgumentNotNull(uri, nameof(uri));
-      Ensure.ArgumentNotNull(method, nameof(method));
+            var response = await SendRawRequest(uri, HttpMethod.Put, parameters, body).ConfigureAwait(false);
+            return response.StatusCode;
+        }
 
-      return new Request(
-        _baseAddress,
-        uri,
-        method,
-        headers ?? new Dictionary<string, string>(),
-        parameters ?? new Dictionary<string, string>())
-      {
-        Body = body,
-        CancellationToken = token
-      };
-    }
+        public void SetRequestTimeout(TimeSpan timeout)
+        {
+            _httpClient.SetRequestTimeout(timeout);
+        }
 
-    private async Task<IApiResponse<T>> DoSerializedRequest<T>(IRequest request)
-    {
-      _jsonSerializer.SerializeRequest(request);
-      var response = await DoRequest(request).ConfigureAwait(false);
-      return _jsonSerializer.DeserializeResponse<T>(response);
-    }
+        private IRequest CreateRequest(
+            Uri uri,
+            HttpMethod method,
+            IDictionary<string, string>? parameters,
+            object? body,
+            IDictionary<string, string>? headers,
+            CancellationToken token = default
+          )
+        {
+            Ensure.ArgumentNotNull(uri, nameof(uri));
+            Ensure.ArgumentNotNull(method, nameof(method));
 
-    private async Task<IResponse> DoRequest(IRequest request)
-    {
-      await ApplyAuthenticator(request).ConfigureAwait(false);
-      _httpLogger?.OnRequest(request);
-      IResponse response = await _httpClient.DoRequest(request).ConfigureAwait(false);
-      _httpLogger?.OnResponse(response);
-      ResponseReceived?.Invoke(this, response);
+            return new Request(
+              _baseAddress,
+              uri,
+              method,
+              headers ?? new Dictionary<string, string>(),
+              parameters ?? new Dictionary<string, string>())
+            {
+                Body = body,
+                CancellationToken = token
+            };
+        }
 
-      ProcessErrors(response);
-      return response;
-    }
+        private async Task<IApiResponse<T>> DoSerializedRequest<T>(IRequest request)
+        {
+            _jsonSerializer.SerializeRequest(request);
+            var response = await DoRequest(request).ConfigureAwait(false);
+            return _jsonSerializer.DeserializeResponse<T>(response);
+        }
 
-    private async Task ApplyAuthenticator(IRequest request)
-    {
+        private async Task<IResponse> DoRequest(IRequest request)
+        {
+            await ApplyAuthenticator(request).ConfigureAwait(false);
+            _httpLogger?.OnRequest(request);
+            IResponse response = await _httpClient.DoRequest(request).ConfigureAwait(false);
+            _httpLogger?.OnResponse(response);
+            ResponseReceived?.Invoke(this, response);
+
+            ProcessErrors(response);
+            return response;
+        }
+
+        private async Task ApplyAuthenticator(IRequest request)
+        {
 #if NETSTANDARD2_0
       if (_authenticator != null
         && !request.Endpoint.IsAbsoluteUri
         || request.Endpoint.AbsoluteUri.Contains("https://api.spotify.com"))
 #else
-      if (_authenticator != null
-        && !request.Endpoint.IsAbsoluteUri
-        || request.Endpoint.AbsoluteUri.Contains("https://api.spotify.com", StringComparison.InvariantCulture))
+            if (_authenticator != null
+              && !request.Endpoint.IsAbsoluteUri
+              || request.Endpoint.AbsoluteUri.Contains("https://api.spotify.com", StringComparison.InvariantCulture))
 #endif
-      {
-        await _authenticator!.Apply(request, this).ConfigureAwait(false);
-      }
+            {
+                await _authenticator!.Apply(request, this).ConfigureAwait(false);
+            }
+        }
+
+        public Task<IResponse> SendRawRequest(
+            Uri uri,
+            HttpMethod method,
+            IDictionary<string, string>? parameters = null,
+            object? body = null,
+            IDictionary<string, string>? headers = null,
+            CancellationToken token = default
+          )
+        {
+            var request = CreateRequest(uri, method, parameters, body, headers, token);
+            return DoRequest(request);
+        }
+
+        public async Task<T> SendAPIRequest<T>(
+            Uri uri,
+            HttpMethod method,
+            IDictionary<string, string>? parameters = null,
+            object? body = null,
+            IDictionary<string, string>? headers = null
+          )
+        {
+            var request = CreateRequest(uri, method, parameters, body, headers);
+            IApiResponse<T> apiResponse = await DoSerializedRequest<T>(request).ConfigureAwait(false);
+            return apiResponse.Body!;
+        }
+
+        public async Task<IResponse> SendAPIRequestDetailed(
+            Uri uri,
+            HttpMethod method,
+            IDictionary<string, string>? parameters = null,
+            object? body = null,
+            IDictionary<string, string>? headers = null
+          )
+        {
+            var request = CreateRequest(uri, method, parameters, body, headers);
+            var response = await DoSerializedRequest<object>(request).ConfigureAwait(false);
+            return response.Response;
+        }
+
+        private static void ProcessErrors(IResponse response)
+        {
+            Ensure.ArgumentNotNull(response, nameof(response));
+
+            if ((int)response.StatusCode >= 200 && (int)response.StatusCode < 400)
+            {
+                return;
+            }
+
+            throw response.StatusCode switch
+            {
+                HttpStatusCode.Unauthorized => new ApiUnauthorizedException(response)
+            };
+        }
     }
-
-    public Task<IResponse> SendRawRequest(
-        Uri uri,
-        HttpMethod method,
-        IDictionary<string, string>? parameters = null,
-        object? body = null,
-        IDictionary<string, string>? headers = null,
-        CancellationToken token = default
-      )
-    {
-      var request = CreateRequest(uri, method, parameters, body, headers, token);
-      return DoRequest(request);
-    }
-
-    public async Task<T> SendAPIRequest<T>(
-        Uri uri,
-        HttpMethod method,
-        IDictionary<string, string>? parameters = null,
-        object? body = null,
-        IDictionary<string, string>? headers = null
-      )
-    {
-      var request = CreateRequest(uri, method, parameters, body, headers);
-      IApiResponse<T> apiResponse = await DoSerializedRequest<T>(request).ConfigureAwait(false);
-      return apiResponse.Body!;
-    }
-
-    public async Task<IResponse> SendAPIRequestDetailed(
-        Uri uri,
-        HttpMethod method,
-        IDictionary<string, string>? parameters = null,
-        object? body = null,
-        IDictionary<string, string>? headers = null
-      )
-    {
-      var request = CreateRequest(uri, method, parameters, body, headers);
-      var response = await DoSerializedRequest<object>(request).ConfigureAwait(false);
-      return response.Response;
-    }
-
-    private static void ProcessErrors(IResponse response)
-    {
-      Ensure.ArgumentNotNull(response, nameof(response));
-
-      if ((int)response.StatusCode >= 200 && (int)response.StatusCode < 400)
-      {
-        return;
-      }
-
-      throw response.StatusCode switch
-      {
-        HttpStatusCode.Unauthorized => new ApiUnauthorizedException(response)
-      };
-    }
-  }
 }

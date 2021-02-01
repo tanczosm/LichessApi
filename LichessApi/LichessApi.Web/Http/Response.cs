@@ -6,22 +6,22 @@ using System.Threading;
 
 namespace LichessApi.Web.Http
 {
-  public class Response : IResponse
-  {
-    public Response(IDictionary<string, string> headers)
+    public class Response : IResponse
     {
-      Ensure.ArgumentNotNull(headers, nameof(headers));
+        public Response(IDictionary<string, string> headers)
+        {
+            Ensure.ArgumentNotNull(headers, nameof(headers));
 
-      Headers = new ReadOnlyDictionary<string, string>(headers);
+            Headers = new ReadOnlyDictionary<string, string>(headers);
+        }
+
+        public object? Body { get; set; }
+
+        public IReadOnlyDictionary<string, string> Headers { get; set; }
+
+        public HttpStatusCode StatusCode { get; set; }
+
+        public string? ContentType { get; set; }
+
     }
-
-    public object? Body { get; set; }
-
-    public IReadOnlyDictionary<string, string> Headers { get; set; }
-
-    public HttpStatusCode StatusCode { get; set; }
-
-    public string? ContentType { get; set; }
-
-  }
 }

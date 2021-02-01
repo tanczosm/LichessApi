@@ -7,55 +7,55 @@ using System.Threading.Tasks;
 
 namespace LichessApi.Web.Http
 {
-  public interface IApiConnector
-  {
-    // IAuthenticator Authenticator { get; }
+    public interface IApiConnector
+    {
+        // IAuthenticator Authenticator { get; }
 
-    IJSONSerializer JSONSerializer { get; }
+        IJSONSerializer JSONSerializer { get; }
 
-    // IHTTPClient HTTPClient { get; }
+        // IHTTPClient HTTPClient { get; }
 
-    event EventHandler<IResponse>? ResponseReceived;
+        event EventHandler<IResponse>? ResponseReceived;
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1716")]
-    Task<T> Get<T>(Uri uri);
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1716")]
-    Task<T> Get<T>(Uri uri, IDictionary<string, string>? parameters);
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1716")]
-    Task<HttpStatusCode> Get(Uri uri, IDictionary<string, string>? parameters, object? body);
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1716")]
+        Task<T> Get<T>(Uri uri);
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1716")]
+        Task<T> Get<T>(Uri uri, IDictionary<string, string>? parameters);
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1716")]
+        Task<HttpStatusCode> Get(Uri uri, IDictionary<string, string>? parameters, object? body);
 
-    Task<T> Post<T>(Uri uri);
-    Task<T> Post<T>(Uri uri, IDictionary<string, string>? parameters);
-    Task<T> Post<T>(Uri uri, IDictionary<string, string>? parameters, object? body);
-    Task<T> Post<T>(Uri uri, IDictionary<string, string>? parameters, object? body, Dictionary<string, string>? headers);
-    Task<HttpStatusCode> Post(Uri uri, IDictionary<string, string>? parameters, object? body);
+        Task<T> Post<T>(Uri uri);
+        Task<T> Post<T>(Uri uri, IDictionary<string, string>? parameters);
+        Task<T> Post<T>(Uri uri, IDictionary<string, string>? parameters, object? body);
+        Task<T> Post<T>(Uri uri, IDictionary<string, string>? parameters, object? body, Dictionary<string, string>? headers);
+        Task<HttpStatusCode> Post(Uri uri, IDictionary<string, string>? parameters, object? body);
 
-    Task<T> Put<T>(Uri uri);
-    Task<T> Put<T>(Uri uri, IDictionary<string, string>? parameters);
-    Task<T> Put<T>(Uri uri, IDictionary<string, string>? parameters, object? body);
-    Task<HttpStatusCode> Put(Uri uri, IDictionary<string, string>? parameters, object? body);
-    Task<HttpStatusCode> PutRaw(Uri uri, IDictionary<string, string>? parameters, object? body);
+        Task<T> Put<T>(Uri uri);
+        Task<T> Put<T>(Uri uri, IDictionary<string, string>? parameters);
+        Task<T> Put<T>(Uri uri, IDictionary<string, string>? parameters, object? body);
+        Task<HttpStatusCode> Put(Uri uri, IDictionary<string, string>? parameters, object? body);
+        Task<HttpStatusCode> PutRaw(Uri uri, IDictionary<string, string>? parameters, object? body);
 
-    Task<T> Delete<T>(Uri uri);
-    Task<T> Delete<T>(Uri uri, IDictionary<string, string>? parameters);
-    Task<T> Delete<T>(Uri uri, IDictionary<string, string>? parameters, object? body);
-    Task<HttpStatusCode> Delete(Uri uri, IDictionary<string, string>? parameters, object? body);
+        Task<T> Delete<T>(Uri uri);
+        Task<T> Delete<T>(Uri uri, IDictionary<string, string>? parameters);
+        Task<T> Delete<T>(Uri uri, IDictionary<string, string>? parameters, object? body);
+        Task<HttpStatusCode> Delete(Uri uri, IDictionary<string, string>? parameters, object? body);
 
-    Task<T> SendAPIRequest<T>(
-      Uri uri, HttpMethod method,
-      IDictionary<string, string>? parameters = null,
-      object? body = null,
-      IDictionary<string, string>? headers = null);
+        Task<T> SendAPIRequest<T>(
+          Uri uri, HttpMethod method,
+          IDictionary<string, string>? parameters = null,
+          object? body = null,
+          IDictionary<string, string>? headers = null);
 
-    Task<IResponse> SendRawRequest(
-        Uri uri,
-        HttpMethod method,
-        IDictionary<string, string>? parameters = null,
-        object? body = null,
-        IDictionary<string, string>? headers = null,
-        CancellationToken token = default
-        );
+        Task<IResponse> SendRawRequest(
+            Uri uri,
+            HttpMethod method,
+            IDictionary<string, string>? parameters = null,
+            object? body = null,
+            IDictionary<string, string>? headers = null,
+            CancellationToken token = default
+            );
 
-    void SetRequestTimeout(TimeSpan timeout);
-  }
+        void SetRequestTimeout(TimeSpan timeout);
+    }
 }

@@ -2,26 +2,26 @@ using System.Web;
 using System;
 namespace LichessApi.Web
 {
-  public class URIParameterFormatProvider : IFormatProvider
-  {
-    private readonly URIParameterFormatter _formatter;
-
-    public URIParameterFormatProvider()
+    public class URIParameterFormatProvider : IFormatProvider
     {
-      _formatter = new URIParameterFormatter();
-    }
+        private readonly URIParameterFormatter _formatter;
 
-    public object? GetFormat(Type? formatType)
-    {
-      return formatType == typeof(ICustomFormatter) ? _formatter : null;
-    }
+        public URIParameterFormatProvider()
+        {
+            _formatter = new URIParameterFormatter();
+        }
 
-    private class URIParameterFormatter : ICustomFormatter
-    {
-      public string Format(string? format, object? arg, IFormatProvider? formatProvider)
-      {
-        return HttpUtility.UrlEncode(arg?.ToString()) ?? string.Empty;
-      }
+        public object? GetFormat(Type? formatType)
+        {
+            return formatType == typeof(ICustomFormatter) ? _formatter : null;
+        }
+
+        private class URIParameterFormatter : ICustomFormatter
+        {
+            public string Format(string? format, object? arg, IFormatProvider? formatProvider)
+            {
+                return HttpUtility.UrlEncode(arg?.ToString()) ?? string.Empty;
+            }
+        }
     }
-  }
 }
