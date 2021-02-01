@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LichessApi.Web.Examples", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.Console", "LichessApi.Web.Examples\Example.Console\Example.Console.csproj", "{5B6A6908-9F86-45AE-9C29-ADF96946B042}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LichessApi.Web.Auth", "LichessApi.Web.Auth\LichessApi.Web.Auth.csproj", "{75B1A6DE-AF3D-4ECC-B68D-64C7EE6538C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{5B6A6908-9F86-45AE-9C29-ADF96946B042}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B6A6908-9F86-45AE-9C29-ADF96946B042}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B6A6908-9F86-45AE-9C29-ADF96946B042}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75B1A6DE-AF3D-4ECC-B68D-64C7EE6538C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75B1A6DE-AF3D-4ECC-B68D-64C7EE6538C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75B1A6DE-AF3D-4ECC-B68D-64C7EE6538C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75B1A6DE-AF3D-4ECC-B68D-64C7EE6538C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
