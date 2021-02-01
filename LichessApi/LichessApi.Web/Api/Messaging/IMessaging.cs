@@ -12,5 +12,7 @@ namespace LichessApi.Web.Api.Messaging
     public interface IMessaging
     {
         void Initialize(IApiConnector api);
+        Task<OkResponse> SendPrivateMessage(string username, string message);
+
     }
 }

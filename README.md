@@ -136,7 +136,7 @@ The following Api areas have been completed so far:
 
 - [x] Authentication
 - [x] Account
-- [ ] Users
+- [x] Users
 - [ ] Relations
 - [x] Games
 - [ ] Puzzles
@@ -148,7 +148,7 @@ The following Api areas have been completed so far:
 - [ ] Swiss Tournaments
 - [ ] Simuls
 - [ ] Studies
-- [ ] Messaging
+- [x] Messaging
 - [ ] Broadcasts
 - [ ] Analysis
 - [ ] Opening Explorer

@@ -21,6 +21,10 @@ namespace LichessApi.Web.Http
         Task<T> Get<T>(Uri uri);
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1716")]
         Task<T> Get<T>(Uri uri, IDictionary<string, string>? parameters);
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1716")]
+        Task<T> Get<T>(Uri uri, IDictionary<string, string>? parameters, IDictionary<string, string>? headers);
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1716")]
         Task<HttpStatusCode> Get(Uri uri, IDictionary<string, string>? parameters, object? body);
 

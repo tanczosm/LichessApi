@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LichessApi.Web.Models
 {
-    class RatingHistory
+    public class RatingHistory
     {
         [Newtonsoft.Json.JsonProperty("name")]
         public string Name { get; set; }
