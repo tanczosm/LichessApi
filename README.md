@@ -190,24 +190,21 @@ Project Link: [https://github.com/tanczosm/LichessApi](https://github.com/tanczo
 ## Acknowledgements
 
 * [https://github.com/JohnnyCrazy/SpotifyAPI-NET](SpotifyAPI-NET)
-* []()
-* []()
-
 
 
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/tanczosm/repo.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/tanczosm/LichessApi.svg?style=for-the-badge
 [contributors-url]: https://github.com/tanczosm/LichessApi/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/tanczosm/repo.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/tanczosm/LichessApi.svg?style=for-the-badge
 [forks-url]: https://github.com/tanczosm/LichessApi/network/members
-[stars-shield]: https://img.shields.io/github/stars/tanczosm/repo.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/tanczosm/LichessApi.svg?style=for-the-badge
 [stars-url]: https://github.com/tanczosm/LichessApi/stargazers
-[issues-shield]: https://img.shields.io/github/issues/tanczosm/repo.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/tanczosm/LichessApi.svg?style=for-the-badge
 [issues-url]: https://github.com/tanczosm/LichessApi/issues
-[license-shield]: https://img.shields.io/github/license/tanczosm/repo.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/tanczosm/LichessApi.svg?style=for-the-badge
 [license-url]: https://github.com/tanczosm/LichessApi/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/tanczosm
