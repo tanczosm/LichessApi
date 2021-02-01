@@ -33,7 +33,9 @@ namespace LichessApi.Web.Http
 
             if (
               (
-                response.ContentType?.Equals("application/json", StringComparison.Ordinal) is true || response.ContentType == null
+                response.ContentType?.Equals("application/json", StringComparison.Ordinal) is true ||
+                response.ContentType?.Equals("application/vnd.lichess.v3+json", StringComparison.Ordinal) is true ||
+                response.ContentType == null
               ))
             {
                 var body = JsonConvert.DeserializeObject<T>(response.Body as string ?? "", _serializerSettings);

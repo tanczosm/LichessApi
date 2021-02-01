@@ -79,6 +79,13 @@ namespace LichessApi.Web.Http
             return SendAPIRequest<T>(uri, HttpMethod.Get, parameters);
         }
 
+        public Task<T> Get<T>(Uri uri, IDictionary<string, string>? parameters, IDictionary<string, string>? headers)
+        {
+            Ensure.ArgumentNotNull(uri, nameof(uri));
+
+            return SendAPIRequest<T>(uri, HttpMethod.Get, parameters, null, headers);
+        }
+
         public async Task<HttpStatusCode> Get(Uri uri, IDictionary<string, string>? parameters, object? body)
         {
             Ensure.ArgumentNotNull(uri, nameof(uri));
