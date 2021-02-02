@@ -19,6 +19,7 @@ using LichessApi.Web.Models;
 using System;
 using System.Collections.Generic;
 using LichessApi.Web;
+using LichessApi.Web.Api.BulkPairings;
 using LichessApi.Web.Http;
 
 namespace LichessApi
@@ -68,6 +69,7 @@ namespace LichessApi
         public IBoard Board { get { return (IBoard)GetArea<Board>(); } }
         public IBot Bot { get { return (IBot)GetArea<Bot>(); } }
         public IBroadcasts Broadcasts { get { return (IBroadcasts)GetArea<Broadcasts>(); } }
+        public IBulkPairings BulkPairings { get { return (IBulkPairings)GetArea<BulkPairings>(); } }
         public IChallenges Challenges { get { return (IChallenges)GetArea<Challenges>(); } }
         public IGames Games { get { return (IGames)GetArea<Games>(); } }
         public IMessaging Messaging { get { return (IMessaging)GetArea<Messaging>(); } }
