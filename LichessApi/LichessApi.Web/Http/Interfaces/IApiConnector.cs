@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
+#pragma warning disable CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
 namespace LichessApi.Web.Http
 {
     public interface IApiConnector
@@ -63,3 +64,4 @@ namespace LichessApi.Web.Http
         void SetRequestTimeout(TimeSpan timeout);
     }
 }
+#pragma warning restore CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.

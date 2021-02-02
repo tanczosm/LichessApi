@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using LichessApi.Web;
 
+#pragma warning disable CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
+
 namespace LichessApi.Web.Api.Challenges.Request
 {
     public partial class CreateOpenEndedChallengeRequest : RequestParams
@@ -30,3 +32,5 @@ namespace LichessApi.Web.Api.Challenges.Request
     }
  
 }
+
+#pragma warning restore CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.

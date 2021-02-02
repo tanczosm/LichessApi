@@ -1,4 +1,5 @@
-﻿using LichessApi.Web.Api;
+﻿#region using statements
+using LichessApi.Web.Api;
 using LichessApi.Web.Api.Account;
 using LichessApi.Web.Api.Analysis;
 using LichessApi.Web.Api.ArenaTournaments;
@@ -21,6 +22,9 @@ using System.Collections.Generic;
 using LichessApi.Web;
 using LichessApi.Web.Api.BulkPairings;
 using LichessApi.Web.Http;
+#endregion 
+
+#pragma warning disable CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
 
 namespace LichessApi
 {
@@ -106,3 +110,5 @@ namespace LichessApi
         }
     }
 }
+
+#pragma warning restore CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.

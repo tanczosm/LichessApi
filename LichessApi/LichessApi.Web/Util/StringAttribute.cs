@@ -3,6 +3,8 @@ using System.Reflection;
 using System.Linq;
 using System.Diagnostics.CodeAnalysis;
 
+#pragma warning disable CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
+
 namespace LichessApi.Web
 {
     [AttributeUsage(AttributeTargets.Field)]
@@ -37,3 +39,5 @@ namespace LichessApi.Web
         }
     }
 }
+
+#pragma warning restore CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.

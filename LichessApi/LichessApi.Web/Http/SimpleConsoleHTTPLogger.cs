@@ -1,8 +1,11 @@
 using System.Linq;
 using System;
 
+#pragma warning disable CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
+
 namespace LichessApi.Web.Http
 {
+   
     public class SimpleConsoleHTTPLogger : IHTTPLogger
     {
         private const string OnRequestFormat = "\n{0} {1} [{2}] {3}";
@@ -38,3 +41,5 @@ namespace LichessApi.Web.Http
         }
     }
 }
+
+#pragma warning restore CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.

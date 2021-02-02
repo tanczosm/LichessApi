@@ -1,5 +1,7 @@
 using System.Web;
 using System;
+
+#pragma warning disable CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
 namespace LichessApi.Web
 {
     public class URIParameterFormatProvider : IFormatProvider
@@ -25,3 +27,4 @@ namespace LichessApi.Web
         }
     }
 }
+#pragma warning restore CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.

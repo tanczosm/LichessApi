@@ -19,10 +19,10 @@ using LichessApi.Web.Api.Studies;
 using LichessApi.Web.Api.SwissTournaments;
 using LichessApi.Web.Api.Teams;
 using LichessApi.Web.Api.Users;
-using LichessApi.Web.Api.Account;
 using LichessApi.Web.Api.BulkPairings;
 using LichessApi.Web.Http;
 
+#pragma warning disable CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
 namespace LichessApi.Web
 {
     public interface ILichessApiClient
@@ -51,3 +51,4 @@ namespace LichessApi.Web
         IResponse? LastResponse { get; }
     }
 }
+#pragma warning restore CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
