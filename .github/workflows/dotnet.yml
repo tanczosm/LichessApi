@@ -26,5 +26,5 @@ jobs:
       run: dotnet build --no-restore
       working-directory: ./LichessApi/
     - name: Test
-      run: dotnet test LichessApi\LichessApi.sln --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity normal
       working-directory: ./LichessApi/
