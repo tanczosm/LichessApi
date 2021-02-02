@@ -19,6 +19,8 @@
   <h3 align="center">Lichess .Net Api Client</h3>
 
   <p align="center">
+	<img src="https://github.com/tanczosm/LichessApi/workflows/.NET/badge.svg">
+	<br/><br/>
     Lichess is a free and open-source Internet chess server run by a non-profit organization of the same name. This project implements a .Net client for the Lichess Api.
     <br />
     <a href="https://github.com/tanczosm/LichessApi"><strong>Explore the docs »</strong></a>
