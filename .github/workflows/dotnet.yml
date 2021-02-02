@@ -18,8 +18,11 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Restore dependencies
-      run: dotnet restore LichessApi\LichessApi.sln
+      run: dotnet restore
+      working-directory: ./LichessApi/
     - name: Build
-      run: dotnet build LichessApi\LichessApi.sln --no-restore
+      run: dotnet build --no-restore
+      working-directory: ./LichessApi/
     - name: Test
       run: dotnet test LichessApi\LichessApi.sln --no-build --verbosity normal
+      working-directory: ./LichessApi/
