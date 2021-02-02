@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LichessApi.Web.Api.Teams
 {
-    public class Teams : ApiBase
+    public class Teams : ApiBase, ITeams
     {
         
     }

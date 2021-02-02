@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LichessApi.Web.Api.Simuls
 {
-    public class Simuls : ApiBase
+    public class Simuls : ApiBase, ISimuls
     {
     }
 }

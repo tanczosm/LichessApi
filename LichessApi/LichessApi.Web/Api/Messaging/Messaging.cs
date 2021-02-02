@@ -9,7 +9,7 @@ using LichessApi.Web.Entities;
 
 namespace LichessApi.Web.Api.Messaging
 {
-    public class Messaging : ApiBase
+    public class Messaging : ApiBase, IMessaging
     {
         /// <summary>
         /// Send a private message

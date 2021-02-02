@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LichessApi.Web.Api.Relations
 {
-    public class Relations : ApiBase
+    public class Relations : ApiBase, IRelations
     {
     }
 }

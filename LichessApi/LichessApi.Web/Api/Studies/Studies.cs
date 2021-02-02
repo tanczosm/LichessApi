@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LichessApi.Web.Api.Studies
 {
-    public class Studies : ApiBase
+    public class Studies : ApiBase, IStudies
     {
     }
 }

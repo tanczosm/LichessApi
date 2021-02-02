@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LichessApi.Web.Api.ArenaTournaments
 {
-    public class ArenaTournaments : ApiBase
+    public class ArenaTournaments : ApiBase, IArenaTournaments
     {
 
     }

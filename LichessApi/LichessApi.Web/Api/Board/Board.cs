@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LichessApi.Web.Api.Board
 {
-    public class Board : ApiBase
+    public class Board : ApiBase, IBoard
     {
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LichessApi.Web.Api.Bot
 {
-    public class Bot : ApiBase
+    public class Bot : ApiBase, IBot
     {
     }
 }
