@@ -19,6 +19,8 @@
   <h3 align="center">Lichess .Net Api Client</h3>
 
   <p align="center">
+	<img src="https://github.com/tanczosm/LichessApi/workflows/.NET/badge.svg">
+	<br/><br/>
     Lichess is a free and open-source Internet chess server run by a non-profit organization of the same name. This project implements a .Net client for the Lichess Api.
     <br />
     <a href="https://github.com/tanczosm/LichessApi"><strong>Explore the docs »</strong></a>
@@ -62,7 +64,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+LichessApi was originally started to be utilized to create a chess league manager that could create team vs team pairings.  It is worth noting that there is additionally an OAuth Asp.net provider that I have written over on the 
+third-party [https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers](AspNet.Security.OAuth.Providers) project that can be utilized in conjunction with this client.
 
 
 ### Features
@@ -81,7 +84,7 @@
 LichessApi is an API client library for .NET and is available on NuGet:
 
 ```
-Install-Package LichessApi
+Install-Package LichessApi.Web
 ```
 
 
@@ -123,6 +126,7 @@ The following Api areas have been completed so far:
 - [ ] Teams
 - [ ] Board
 - [ ] Bot
+- [ ] Bulk Pairings
 - [x] Challenges
 - [ ] Arena Tournaments
 - [ ] Swiss Tournaments
@@ -182,6 +186,6 @@ Project Link: [https://github.com/tanczosm/LichessApi](https://github.com/tanczo
 [issues-shield]: https://img.shields.io/github/issues/tanczosm/LichessApi.svg?style=for-the-badge
 [issues-url]: https://github.com/tanczosm/LichessApi/issues
 [license-shield]: https://img.shields.io/github/license/tanczosm/LichessApi.svg?style=for-the-badge
-[license-url]: https://github.com/tanczosm/LichessApi/blob/master/LICENSE.txt
+[license-url]: https://github.com/tanczosm/LichessApi/blob/master/LICENSE.md
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/michael-tanczos-4aa7b62a

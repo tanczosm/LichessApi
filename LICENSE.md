@@ -1,7 +1,7 @@
 MIT License
 
-Includes code derived from SpotifyAPI-Net under MIT License, Copyright 2020 Jonas Dellinger
-LichessApi Copyright 2021 Michael Tanczos
+- Includes code derived from SpotifyAPI-Net under MIT License, Copyright 2020 Jonas Dellinger
+- LichessApi Copyright 2021 Michael Tanczos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
