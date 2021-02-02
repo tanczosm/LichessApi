@@ -184,6 +184,6 @@ Project Link: [https://github.com/tanczosm/LichessApi](https://github.com/tanczo
 [issues-shield]: https://img.shields.io/github/issues/tanczosm/LichessApi.svg?style=for-the-badge
 [issues-url]: https://github.com/tanczosm/LichessApi/issues
 [license-shield]: https://img.shields.io/github/license/tanczosm/LichessApi.svg?style=for-the-badge
-[license-url]: https://github.com/tanczosm/LichessApi/blob/master/LICENSE.txt
+[license-url]: https://github.com/tanczosm/LichessApi/blob/master/LICENSE.md
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/michael-tanczos-4aa7b62a
