@@ -20,6 +20,7 @@ using LichessApi.Web.Api.SwissTournaments;
 using LichessApi.Web.Api.Teams;
 using LichessApi.Web.Api.Users;
 using LichessApi.Web.Api.Account;
+using LichessApi.Web.Api.BulkPairings;
 using LichessApi.Web.Http;
 
 namespace LichessApi.Web
@@ -36,6 +37,7 @@ namespace LichessApi.Web
         IBoard Board { get; }
         IBot Bot { get; }
         IBroadcasts Broadcasts { get; }
+        IBulkPairings BulkPairings { get;  }
         IChallenges Challenges { get; }
         IGames Games { get; }
         IMessaging Messaging { get; }

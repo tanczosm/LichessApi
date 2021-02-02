@@ -7,9 +7,9 @@ using LichessApi.Web.Models;
 using LichessApi.Web.Entities;
 using LichessApi.Web.Http;
 
-namespace LichessApi.Web.Api.Relations
+namespace LichessApi.Web.Api.BulkPairings
 {
-    public interface IRelations
+    public interface IBulkPairings
     {
         void Initialize(IApiConnector api);
     }
