@@ -13,7 +13,7 @@ using Shouldly;
 
 namespace LichessApi.Web.Api.Games
 {
-    public class Games : ApiBase
+    public class Games : ApiBase, IGames
     {
         /// <summary>
         /// Download one game in either PGN or JSON format. If the game is ongoing, the 3 last moves are omitted.

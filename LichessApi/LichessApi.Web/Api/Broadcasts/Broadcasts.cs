@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LichessApi.Web.Api.Broadcasts
 {
-    public class Broadcasts : ApiBase
+    public class Broadcasts : ApiBase, IBroadcasts
     {
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LichessApi.Web.Api.Analysis
 {
-    public class Analysis : ApiBase
+    public class Analysis : ApiBase, IAnalysis
     {
 
     }

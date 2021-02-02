@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LichessApi.Web.Api.BulkPairings
 {
-    public class BulkPairings : ApiBase
+    public class BulkPairings : ApiBase, IBulkPairings
     {
     }
 }

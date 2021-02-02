@@ -15,7 +15,7 @@ using Shouldly;
 
 namespace LichessApi.Web.Api.Users
 {
-    public class Users : ApiBase
+    public class Users : ApiBase, IUsers
     {
         /// <summary>
         /// Read the online, playing and streaming flags of several users.

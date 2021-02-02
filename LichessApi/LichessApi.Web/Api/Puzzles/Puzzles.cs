@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LichessApi.Web.Api.Puzzles
 {
-    public class Puzzles : ApiBase
+    public class Puzzles : ApiBase, IPuzzles
     {
     }
 }
