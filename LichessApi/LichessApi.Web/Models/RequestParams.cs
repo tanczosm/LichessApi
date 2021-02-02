@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Collections;
 using Newtonsoft.Json.Linq;
 
+#pragma warning disable CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
+
 namespace LichessApi.Web
 {
   public abstract class RequestParams
@@ -178,3 +180,4 @@ namespace LichessApi.Web
   }
 }
 
+#pragma warning restore CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.

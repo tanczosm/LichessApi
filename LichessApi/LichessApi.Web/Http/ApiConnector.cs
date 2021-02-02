@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Threading;
 
+#pragma warning disable CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
 namespace LichessApi.Web.Http
 {
     public class ApiConnector : IApiConnector
@@ -281,8 +282,11 @@ namespace LichessApi.Web.Http
 
             throw response.StatusCode switch
             {
-                HttpStatusCode.Unauthorized => new ApiUnauthorizedException(response)
+                HttpStatusCode.Unauthorized => new ApiUnauthorizedException(response),
+                HttpStatusCode.BadRequest => new ApiInvalidRequest(response),
+                _ => new Exception("Unhandled http result")
             };
         }
     }
 }
+#pragma warning restore CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.

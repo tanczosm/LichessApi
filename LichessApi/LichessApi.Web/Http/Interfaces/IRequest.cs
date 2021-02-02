@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 
+#pragma warning disable CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
+
 namespace LichessApi.Web.Http
 {
     public interface IRequest
@@ -22,3 +24,5 @@ namespace LichessApi.Web.Http
         CancellationToken CancellationToken { get; set; }
     }
 }
+
+#pragma warning restore CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.

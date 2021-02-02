@@ -1,3 +1,5 @@
+#pragma warning disable CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
+
 namespace LichessApi.Web
 {
     public class ProxyConfig : IProxyConfig
@@ -18,3 +20,4 @@ namespace LichessApi.Web
         public bool SkipSSLCheck { get; set; }
     }
 }
+#pragma warning restore CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
