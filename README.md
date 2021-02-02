@@ -62,7 +62,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+LichessApi was originally started to be utilized to create a chess league manager that could create team vs team pairings.  It is worth noting that there is additionally an OAuth Asp.net provider that I have written over on the 
+third-party [https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers](AspNet.Security.OAuth.Providers) project that can be utilized in conjunction with this client.
 
 
 ### Features
@@ -81,7 +82,7 @@
 LichessApi is an API client library for .NET and is available on NuGet:
 
 ```
-Install-Package LichessApi
+Install-Package LichessApi.Web
 ```
 
 
@@ -123,6 +124,7 @@ The following Api areas have been completed so far:
 - [ ] Teams
 - [ ] Board
 - [ ] Bot
+- [ ] Bulk Pairings
 - [x] Challenges
 - [ ] Arena Tournaments
 - [ ] Swiss Tournaments
