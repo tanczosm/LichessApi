@@ -1,0 +1,37 @@
+{
+  "$schema": "https://raw.githubusercontent.com/dotnet/Nerdbank.GitVersioning/master/src/NerdBank.GitVersioning/version.schema.json",
+  "version": "1.0-prerelease", // required (unless the "inherit" field is set to true and a parent version.json file sets this.)
+  "assemblyVersion": {
+    "version": "1.0", // optional. Use when x.y for AssemblyVersionAttribute differs from the default version property.
+    "precision": "revision" // optional. Use when you want a more precise assembly version than the default major.minor.
+  },
+  "semVer1NumericIdentifierPadding": 4, // optional. Use when your -prerelease includes numeric identifiers and need semver1 support.
+  "gitCommitIdShortFixedLength": 10, // optional. Set the commit ID abbreviation length.
+  "gitCommitIdShortAutoMinimum": 0, // optional. Set to use the short commit ID abbreviation provided by the git repository.
+  "nugetPackageVersion": {
+     "semVer": 1 // optional. Set to either 1 or 2 to control how the NuGet package version string is generated. Default is 1.
+  },
+  "pathFilters": [
+    // optional list of paths to consider when calculating version height.
+  ],
+  "publicReleaseRefSpec": [
+    "^refs/heads/main$", // we release out of main
+    "^refs/tags/v\\d+\\.\\d+" // we also release tags starting with vN.N
+  ],
+  "cloudBuild": {
+    "setVersionVariables": true,
+    "buildNumber": {
+      "enabled": false,
+      "includeCommitId": {
+        "when": "nonPublicReleaseOnly",
+        "where": "buildMetadata"
+      }
+    }
+  },
+  "release" : {
+    "branchName" : "v{version}",
+    "versionIncrement" : "minor",
+    "firstUnstableTag" : "alpha"
+  },
+  "inherit": false // optional. Set to true in secondary version.json files used to tweak settings for subsets of projects.
+}
