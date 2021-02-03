@@ -13,6 +13,6 @@ namespace LichessApi.Web.Api.Simuls
     {
         void Initialize(IApiConnector api);
 
-        Task<Simul> GetCurrentSimuls()
+        Task<Simul> GetCurrentSimuls();
     }
 }
