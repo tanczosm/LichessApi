@@ -18,6 +18,6 @@ namespace LichessApi.Web.Entities
         public int Draw { get; set; }
 
         [Newtonsoft.Json.JsonProperty("rp", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Rp rp { get; set; }
+        public Rp Rp { get; set; }
     }
 }

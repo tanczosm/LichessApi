@@ -43,9 +43,6 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -126,11 +123,11 @@ The following Api areas have been completed so far:
 - [ ] Teams
 - [ ] Board
 - [ ] Bot
-- [ ] Bulk Pairings
+- [x] Bulk Pairings
 - [x] Challenges
 - [ ] Arena Tournaments
 - [ ] Swiss Tournaments
-- [ ] Simuls
+- [x] Simuls
 - [ ] Studies
 - [x] Messaging
 - [ ] Broadcasts
