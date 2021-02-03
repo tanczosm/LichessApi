@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using LichessApi.Web;
+using LichessApi.Web.Api.Games.Request;
 
 namespace LichessApi
 {
@@ -75,7 +77,17 @@ namespace LichessApi
             public static Uri HandleDrawOffers(string gameId, string accept) => EUri($"/api/board/game/{gameId}/draw/{accept}");
 
             // Bot
-            // TODO
+            public static Uri UpgradeToBotAccount() => EUri($"/api/bot/account/upgrade");
+            public static Uri StreamBotGameState(string gameId) => EUri($"/api/bot/game/stream/{gameId}");
+            public static Uri MakeBotMove(string gameId, string move) => EUri($"/api/bot/game/{gameId}/move/{move}");
+            public static Uri WriteInBotChat(string gameId) => EUri($"/api/bot/game/{gameId}/chat");
+            public static Uri AbortBotGame(string gameId) => EUri($"/api/bot/game/{gameId}/abort");
+            public static Uri ResignBotGame(string gameId) => EUri($"/api/bot/game/{gameId}/resign");
+
+            // Bulk pairings
+            public static Uri ViewUpcomingBulkPairings() => EUri($"/api/bulk-pairing");
+            public static Uri CreateBulkPairing() => EUri($"/api/bulk-pairing");
+            public static Uri CancelBulkPairing(string bulkPairingId) => EUri($"/ap/bulk-pairing/{bulkPairingId}");
 
             // Challenges
             public static Uri CreateChallenge(string username) => EUri($"/api/challenge/{username}");
@@ -89,16 +101,27 @@ namespace LichessApi
             public static Uri CreateAdminChallenge(string orig, string dest) => EUri($"/api/challenge/admin/{orig}/{dest}");
             
             // Arena Tournaments
-            // TODO
+            public static Uri GetCurrentTournaments() => EUri($"/api/tournament");
+            public static Uri CreateArenaTournament() => EUri($"/api/tournament");
+            public static Uri UpdateTeamBattle(string tournamentId) => EUri($"/api/tournament/team-battle/{tournamentId}"); 
+            public static Uri GetTournamentInfo(string tournamentId) => EUri($"/api/tournament/{tournamentId}");
+            public static Uri ExportArenaTournamentGames(string tournamentId) => EUri($"/api/tournament/{tournamentId}/games");
+            public static Uri GetArenaTournamentResults(string tournamentId) => EUri($"/api/tournament/{tournamentId}/results");
+            public static Uri GetTeamBattleStanding(string tournamentId) => EUri($"/api/tournament/{tournamentId}/teams");
+            public static Uri GetTournamentsCreatedByUser(string username) => EUri($"/api/user/{username}/tournament/created");
 
             // Swiss Tournaments
-            // TODO
+            public static Uri CreateSwissTournament (string teamId) => EUri($"/api/swiss/new/{teamId}");
+            public static Uri ExportSwissTournamentTRF(string tournamentId) => EUri($"/swiss/{tournamentId}.trf");
+            public static Uri ExportSwissTournamentGames(string tournamentId) => EUri($"/api/swiss/{tournamentId}/games");
+            public static Uri ExportSwissTournamentResults(string tournamentId) => EUri($"/api/swiss/{tournamentId}/results");
 
             // Simuls
-            // TODO
+            public static Uri GetCurrentSimuls() => EUri($"/api/simul");
 
             // Studies
-            // TODO
+            public static Uri ExportOneStudyChapter(string studyId, string chapterId) => EUri($"/study/{studyId}/{chapterId}.pgn");
+            public static Uri ExportAllChapters(string studyId) => EUri($"/study/{studyId}.pgn");
 
             // Messaging
             public static Uri SendPrivateMessage(string username) => EUri($"/inbox/{username}");
@@ -111,7 +134,7 @@ namespace LichessApi
             public static Uri PushPGNToYourBroadcast(string slug, string broadcastId) => EUri($"/broadcast/{slug}/{broadcastId}/push");
 
             // Analysis
-            // TODO
+            public static Uri GetCloudEvaluationOfPosition(string fen, int multiPv = 1, string variant = "standard") => EUri($"/api/cloud-eval");
 
             private static Uri EUri(FormattableString path) => new(path.ToString(_provider), UriKind.Relative);
         }
@@ -146,6 +169,11 @@ namespace LichessApi
             /// Create, accept, decline challenges
             /// </summary>
             public const string ChallengeWrite = "challenge:write";
+
+            /// <summary>
+            /// Create or delete bulk challenges
+            /// </summary>
+            public const string ChallengeBulk = "challenge:bulk";
 
             /// <summary>
             /// Read private studies and broadcasts

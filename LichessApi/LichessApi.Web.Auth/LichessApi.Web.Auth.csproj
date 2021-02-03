@@ -9,7 +9,7 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
     <Description>
-      An embedded Web Server, based on EmbeddedIO, for Spotify Web API Authorization flows
+      An embedded Web Server, based on EmbeddedIO, for Lichess Web API Authorization flows
     </Description>
     <PackageTags>
       lichess api .net c# lichess-client
