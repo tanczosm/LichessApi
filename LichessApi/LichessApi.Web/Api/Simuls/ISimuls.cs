@@ -12,5 +12,7 @@ namespace LichessApi.Web.Api.Simuls
     public interface ISimuls
     {
         void Initialize(IApiConnector api);
+
+        Task<Simul> GetCurrentSimuls()
     }
 }
