@@ -37,7 +37,7 @@ namespace LichessApi
 
             // Relations
             public static Uri GetUsersFollowed(string username)         => EUri($"/api/user/{username}/following");
-            public static Uri GetFollowedUsers(string username)         => EUri($"/api/user/{username}/followers");
+            public static Uri GetUsersWhoFollowUser(string username)         => EUri($"/api/user/{username}/followers");
 
             // Games
             public static Uri ExportOneGame(string gameId)       => EUri($"/game/export/{gameId}");
