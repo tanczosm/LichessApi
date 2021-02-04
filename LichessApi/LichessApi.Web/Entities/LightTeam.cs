@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LichessApi.Web.Entities
 {
-    public class Team
+    public class LightTeam
     {
         [Newtonsoft.Json.JsonProperty("url", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Url { get; set; }

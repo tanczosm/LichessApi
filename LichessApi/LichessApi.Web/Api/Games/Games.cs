@@ -38,8 +38,18 @@ namespace LichessApi.Web.Api.Games
         }
 
         /// <summary>
+        /// Download all games of any user in PGN or ndjson format.
+        /// Games are sorted by reverse chronological order(most recent first)
+        ///
+        /// We recommend streaming the response, for it can be very long. https://lichess.org/@/german11 for instance has more than 320,000 games.
+        ///
+        /// The game stream is throttled, depending on who is making the request:
+        ///
+        /// Anonymous request: 20 games per second
+        /// OAuth2 authenticated request: 30 games per second
+        /// Authenticated, downloading your own games: 60 games per second
         /// 
-        /// <see href=""/></see>
+        /// <see href="https://lichess.org/api#operation/apiGamesUser"/></see>
         /// </summary>
         /// <returns></returns>
         public Task<UserExtended> ExportGames(string username, ExportGamesRequest request)

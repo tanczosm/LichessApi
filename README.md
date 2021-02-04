@@ -117,10 +117,10 @@ The following Api areas have been completed so far:
 - [x] Authentication
 - [x] Account
 - [x] Users
-- [ ] Relations
+- [x] Relations
 - [x] Games
 - [ ] Puzzles
-- [ ] Teams
+- [x] Teams
 - [ ] Board
 - [ ] Bot
 - [x] Bulk Pairings
