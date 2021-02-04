@@ -34,7 +34,7 @@ namespace LichessApi.Web.Models
         public Follows Follows { get; set; }
 
         [Newtonsoft.Json.JsonProperty("teams", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public List<Team> Teams { get; set; }
+        public List<LightTeam> Teams { get; set; }
 
         [Newtonsoft.Json.JsonProperty("posts", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public List<Topic> Topics { get; set; }
