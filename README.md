@@ -119,7 +119,7 @@ The following Api areas have been completed so far:
 - [x] Users
 - [x] Relations
 - [x] Games
-- [ ] Puzzles
+- [x] Puzzles
 - [x] Teams
 - [ ] Board
 - [ ] Bot

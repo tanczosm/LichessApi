@@ -67,23 +67,24 @@ namespace LichessApi
         }
 
         // Apis
-        public IAccount Account { get { return (IAccount)GetArea<Account>(); } }
-        public IAnalysis Analysis { get { return (IAnalysis)GetArea<Analysis>(); } }
-        public IArenaTournaments ArenaTournaments { get { return (IArenaTournaments)GetArea<ArenaTournaments>(); } }
-        public IBoard Board { get { return (IBoard)GetArea<Board>(); } }
-        public IBot Bot { get { return (IBot)GetArea<Bot>(); } }
-        public IBroadcasts Broadcasts { get { return (IBroadcasts)GetArea<Broadcasts>(); } }
-        public IBulkPairings BulkPairings { get { return (IBulkPairings)GetArea<BulkPairings>(); } }
-        public IChallenges Challenges { get { return (IChallenges)GetArea<Challenges>(); } }
-        public IGames Games { get { return (IGames)GetArea<Games>(); } }
-        public IMessaging Messaging { get { return (IMessaging)GetArea<Messaging>(); } }
-        public IPuzzles Puzzles { get { return (IPuzzles)GetArea<Puzzles>(); } }
-        public IRelations Relations { get { return (IRelations)GetArea<Relations>(); } }
-        public ISimuls Simuls { get { return (ISimuls)GetArea<Simuls>(); } }
-        public IStudies Studies { get { return (IStudies)GetArea<Studies>(); } }
-        public ISwissTournaments SwissTournaments { get { return (ISwissTournaments)GetArea<SwissTournaments>(); } }
-        public ITeams Teams { get { return (ITeams)GetArea<Teams>(); } }
-        public IUsers Users { get { return (IUsers)GetArea<Users>(); } }
+        public IAccount Account { get { return GetArea<Account>(); } }
+        public IAnalysis Analysis { get { return GetArea<Analysis>(); } }
+        public IArenaTournaments ArenaTournaments { get { return GetArea<ArenaTournaments>(); } }
+        public IBoard Board { get { return GetArea<Board>(); } }
+        public IBot Bot { get { return GetArea<Bot>(); } }
+        public IBroadcasts Broadcasts { get { return GetArea<Broadcasts>(); } }
+        public IBulkPairings BulkPairings { get { return GetArea<BulkPairings>(); } }
+        public IChallenges Challenges { get { return GetArea<Challenges>(); } }
+        public IGames Games { get { return GetArea<Games>(); } }
+        public IMessaging Messaging { get { return GetArea<Messaging>(); } }
+        public IPuzzles Puzzles { get { return GetArea<Puzzles>(); } }
+        public IRelations Relations { get { return GetArea<Relations>(); } }
+        public ISimuls Simuls { get { return GetArea<Simuls>(); } }
+        public IStudies Studies { get { return GetArea<Studies>(); } }
+        public ISwissTournaments SwissTournaments { get { return GetArea<SwissTournaments>(); } }
+        public ITeams Teams { get { return GetArea<Teams>(); } }
+        public IUsers Users { get { return GetArea<Users>(); } }
+      
         public IResponse? LastResponse { get; private set; }
 
         /// <summary>
