@@ -78,7 +78,7 @@ third-party [https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers](
 <!-- GETTING STARTED -->
 ## Getting Started
 
-LichessApi is an API client library for .NET and is available on NuGet:
+LichessApi is an API client library for .NET and is available on NuGet (IN PROGRESS):
 
 ```
 Install-Package LichessApi.Web
