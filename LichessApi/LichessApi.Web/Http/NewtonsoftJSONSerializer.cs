@@ -4,6 +4,8 @@ using System;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
+using LichessApi.Util.Converters;
+using LichessApi.Web.Util.Converters;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
@@ -27,7 +29,9 @@ namespace LichessApi.Web.Http
                 ContractResolver = contractResolver,
                 Converters =
                 {
-                    new StringEnumConverter()
+                    new StringEnumConverter(),
+                    new MillisecondEpochConverter(),
+                    new RatingEntryConverter()
                 }
             };
         }
