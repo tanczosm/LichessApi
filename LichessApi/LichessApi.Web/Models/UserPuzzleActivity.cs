@@ -7,7 +7,7 @@ using LichessApi.Web.Entities;
 
 namespace LichessApi.Web.Models
 {
-    public class PuzzleActivity
+    public class UserPuzzleActivity
     {
         [Newtonsoft.Json.JsonProperty("score", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Score Score { get; set; }

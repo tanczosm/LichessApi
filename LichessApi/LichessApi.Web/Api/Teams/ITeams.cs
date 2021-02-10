@@ -22,7 +22,7 @@ namespace LichessApi.Web.Api.Teams
         Task<List<Team>> SearchTeams(string text, int page = 1);
 
         IAsyncEnumerable<ArenaTournament> GetTeamArenaTournaments(string teamId, int max,
-            [EnumeratorCancellation] CancellationToken token = default);
+            CancellationToken token = default);
         Task<OkResponse> JoinTeam(string teamId, string message, string password = null);
         Task<OkResponse> LeaveTeam(string teamId);
         Task<OkResponse> KickTeamMember(string teamId, string userId);

@@ -8,7 +8,7 @@ namespace LichessApi.Web.Api.Account.Request
 {
     public class SetMyKidModeStatusRequest : RequestParams
     {
-        [QueryParam("v")]
+        [Newtonsoft.Json.JsonProperty("v", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool V { get; set; }
     }
 }

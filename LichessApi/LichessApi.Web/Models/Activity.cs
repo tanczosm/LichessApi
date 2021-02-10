@@ -16,7 +16,7 @@ namespace LichessApi.Web.Models
         public GameActivity Games { get; set; }
 
         [Newtonsoft.Json.JsonProperty("puzzles", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public PuzzleActivity Puzzles { get; set; }
+        public UserPuzzleActivity Puzzles { get; set; }
 
         [Newtonsoft.Json.JsonProperty("tournaments", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Tournaments Tournaments { get; set; }

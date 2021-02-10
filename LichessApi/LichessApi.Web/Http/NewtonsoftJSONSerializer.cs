@@ -5,6 +5,7 @@ using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 
 namespace LichessApi.Web.Http
@@ -23,7 +24,11 @@ namespace LichessApi.Web.Http
             _serializerSettings = new JsonSerializerSettings
             {
                 NullValueHandling = NullValueHandling.Ignore,
-                ContractResolver = contractResolver
+                ContractResolver = contractResolver,
+                Converters =
+                {
+                    new StringEnumConverter()
+                }
             };
         }
 

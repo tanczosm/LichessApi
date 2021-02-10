@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using LichessApi.Web.Api.Puzzles.Response;
 using LichessApi.Web.Entities;
 using Shouldly;
-using PuzzleActivity = LichessApi.Web.Models.PuzzleActivity;
 
 namespace LichessApi.Web.Api.Puzzles
 {
