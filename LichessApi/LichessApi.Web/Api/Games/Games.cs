@@ -76,7 +76,7 @@ namespace LichessApi.Web.Api.Games
         /// <returns></returns>
         public async IAsyncEnumerable<Game> ExportGamesByUser(string username, ExportGamesRequest request, [EnumeratorCancellation] CancellationToken token = default)
         {
-            var response = await API.SendRawRequest(LichessApiConstants.EndPoints.ExportGamesByUser(username), HttpMethod.Get, parameters: request.BuildQueryParams(), token: token).ConfigureAwait(false);
+            var response = await API.SendRawRequest(LichessApiConstants.EndPoints.ExportGamesByUser(username), HttpMethod.Get, parameters: request.BuildQueryParams(), headers: API.AcceptNdJsonHeaders(), token: token).ConfigureAwait(false);
 
             await foreach (var o in StreamNdJson<Game>(response, token))
             {
@@ -100,7 +100,7 @@ namespace LichessApi.Web.Api.Games
 
             string strGameIds = String.Join(",", gameIds);
 
-            var response = await API.SendRawRequest(LichessApiConstants.EndPoints.ExportGamesByIds(), HttpMethod.Post, request.BuildQueryParams(), body: strGameIds, token: token);
+            var response = await API.SendRawRequest(LichessApiConstants.EndPoints.ExportGamesByIds(), HttpMethod.Post, request.BuildQueryParams(), body: strGameIds, headers: API.AcceptNdJsonHeaders(), token: token);
 
             await foreach (var o in StreamNdJson<Game>(response, token))
             {
@@ -126,7 +126,7 @@ namespace LichessApi.Web.Api.Games
 
             string strUserIds = String.Join(",", userIds);
 
-            var response = await API.SendRawRequest(LichessApiConstants.EndPoints.StreamCurrentGames(), HttpMethod.Post, null, body: strUserIds, token: token);
+            var response = await API.SendRawRequest(LichessApiConstants.EndPoints.StreamCurrentGames(), HttpMethod.Post, null, body: strUserIds, headers: API.AcceptNdJsonHeaders(), token: token);
 
             await foreach (var o in StreamNdJson<Game>(response, token))
             {
@@ -173,7 +173,7 @@ namespace LichessApi.Web.Api.Games
         /// <returns></returns>
         public async IAsyncEnumerable<StreamCurrentTVGameResponse> StreamCurrentTVGame([EnumeratorCancellation] CancellationToken token = default)
         {
-            var response = await API.SendRawRequest(LichessApiConstants.EndPoints.StreamCurrentTvGame(), HttpMethod.Get, token: token);
+            var response = await API.SendRawRequest(LichessApiConstants.EndPoints.StreamCurrentTvGame(), HttpMethod.Get, headers: API.AcceptNdJsonHeaders(), token: token);
 
             await foreach (var o in StreamNdJson<StreamCurrentTVGameResponse>(response, token))
             {

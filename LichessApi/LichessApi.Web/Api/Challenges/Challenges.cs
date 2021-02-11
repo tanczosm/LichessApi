@@ -43,12 +43,15 @@ namespace LichessApi.Web.Api.Challenges
         /// <see href="https://lichess.org/api#operation/challengeCreate"/></see>
         /// </summary>
         /// <returns></returns>
-        public Task<Challenge> CreateChallenge(string opponentUsername, ChallengeRequest request)
+        public Task<ChallengeResponse> CreateChallenge(string opponentUsername, ChallengeRequest request)
         {
-            request.Days.ShouldBeGreaterThanOrEqualTo(1);
-            request.Days.ShouldBeLessThanOrEqualTo(15);
+            if (request.Days is not null)
+            {
+                ((int)request.Days).ShouldBeGreaterThanOrEqualTo(1);
+                ((int)request.Days).ShouldBeLessThanOrEqualTo(15);
+            }
 
-            return API.Post<Challenge>(LichessApiConstants.EndPoints.CreateChallenge(opponentUsername), null, request.BuildBodyParams());
+            return API.Post<ChallengeResponse>(LichessApiConstants.EndPoints.CreateChallenge(opponentUsername), null, request.BuildBodyParams());
         }
 
         // TODO: Verify if this works as the documentation is a little sketchy

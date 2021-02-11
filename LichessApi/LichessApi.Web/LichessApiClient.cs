@@ -64,6 +64,8 @@ namespace LichessApi
             {
                 LastResponse = response;
             };
+
+            Connector = API;
         }
 
         // Apis
@@ -86,6 +88,7 @@ namespace LichessApi
         public IUsers Users { get { return GetArea<Users>(); } }
       
         public IResponse? LastResponse { get; private set; }
+        public IApiConnector Connector { get; private set; }
 
         /// <summary>
         /// Allows for lazy initialization of api clients

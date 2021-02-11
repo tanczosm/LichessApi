@@ -61,6 +61,7 @@ namespace LichessApi.Web.Http
             CancellationToken token = default
             );
 
+        Dictionary<string, string> AcceptNdJsonHeaders();
         void SetRequestTimeout(TimeSpan timeout);
     }
 }

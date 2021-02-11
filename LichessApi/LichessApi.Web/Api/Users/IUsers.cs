@@ -18,7 +18,7 @@ namespace LichessApi.Web.Api.Users
         void Initialize(IApiConnector api);
         Task<List<LightUser>> GetRealTimeUsersStatus(List<string> userIds);
         Task<GetTop10Response> GetTop10();
-        Task<List<User>> GetOneLeaderboard(int numberOfUsers, PerfType gameVariant);
+        Task<List<User>> GetOneLeaderboard(int numberOfUsers, GameVariant gameVariant);
         Task<UserExtended> GetPublicProfile(string username);
         Task<List<RatingHistory>> GetRatingHistory(string username);
         Task<Activity> GetUserActivity(string username);

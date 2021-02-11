@@ -21,7 +21,7 @@ namespace LichessApi.Web.Api.Challenges
     {
         void Initialize(IApiConnector api);
         IAsyncEnumerable<EventStreamResponse> StreamIncomingEvents(CancellationToken token = default);
-        Task<Challenge> CreateChallenge(string opponentUsername, ChallengeRequest request);
+        Task<ChallengeResponse> CreateChallenge(string opponentUsername, ChallengeRequest request);
         Task<GameResponse> CreateGame(string opponentUsername, string opponentToken, CreateGameRequest request);
         Task<OkResponse> AcceptChallenge(string challengeId);
         Task<OkResponse> DeclineChallenge(string challengeId, ChallengeDeclineReason reason);

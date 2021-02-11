@@ -37,7 +37,7 @@ namespace LichessApi.Web.Api.Puzzles
                     {"max", maxPuzzles == 0 ? null : maxPuzzles.ToString()}
                 };
 
-            var response = await API.SendRawRequest(LichessApiConstants.EndPoints.GetPuzzleActivity(), HttpMethod.Get, request, token: token);
+            var response = await API.SendRawRequest(LichessApiConstants.EndPoints.GetPuzzleActivity(), HttpMethod.Get, request, headers: API.AcceptNdJsonHeaders(), token: token);
 
             await foreach (var o in StreamNdJson<PuzzleActivity>(response, token))
             {

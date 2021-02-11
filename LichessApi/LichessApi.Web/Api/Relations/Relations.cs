@@ -21,7 +21,7 @@ namespace LichessApi.Web.Api.Relations
         /// <returns></returns>
         public async IAsyncEnumerable<UserExtended> GetUsersFollowed(string username, [EnumeratorCancellation] CancellationToken token = default)
         {
-            var response = await API.SendRawRequest(LichessApiConstants.EndPoints.GetUsersFollowed(username), HttpMethod.Get, token: token).ConfigureAwait(false);
+            var response = await API.SendRawRequest(LichessApiConstants.EndPoints.GetUsersFollowed(username), HttpMethod.Get, headers: API.AcceptNdJsonHeaders(), token: token).ConfigureAwait(false);
 
             await foreach (var o in StreamNdJson<UserExtended>(response, token))
             {
@@ -36,7 +36,7 @@ namespace LichessApi.Web.Api.Relations
         /// <returns></returns>
         public async IAsyncEnumerable<UserExtended> GetUsersWhoFollowUser(string username, [EnumeratorCancellation] CancellationToken token = default)
         {
-            var response = await API.SendRawRequest(LichessApiConstants.EndPoints.GetUsersWhoFollowUser(username), HttpMethod.Get, token: token).ConfigureAwait(false);
+            var response = await API.SendRawRequest(LichessApiConstants.EndPoints.GetUsersWhoFollowUser(username), HttpMethod.Get, headers: API.AcceptNdJsonHeaders(), token: token).ConfigureAwait(false);
 
             await foreach (var o in StreamNdJson<UserExtended>(response, token))
             {

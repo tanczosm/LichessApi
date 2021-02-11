@@ -34,7 +34,7 @@ namespace LichessApi.Web.Models
 
         [Newtonsoft.Json.JsonProperty("perf", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public PerfType Perf { get; set; }
+        public GameVariant Perf { get; set; }
 
         /// <summary>Games are rated and impact players ratings</summary>
         [Newtonsoft.Json.JsonProperty("rated", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]

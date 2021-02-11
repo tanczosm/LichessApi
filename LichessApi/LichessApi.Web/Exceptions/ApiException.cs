@@ -49,13 +49,17 @@ namespace LichessApi.Web
 
 
                 var error = bodyObject.Value<JToken>("error");
-                if (error.Type == JTokenType.String)
+                if (error?.Type == JTokenType.String)
                 {
                     return error.ToString();
                 }
-                else if (error.Type == JTokenType.Object)
+                else if (error?.Type == JTokenType.Object)
                 {
                     return error.Value<string>("message");
+                }
+                else
+                {
+                    return body;
                 }
             }
             catch (JsonReaderException)

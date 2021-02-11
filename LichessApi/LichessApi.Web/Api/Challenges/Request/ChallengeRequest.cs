@@ -22,8 +22,9 @@ namespace LichessApi.Web.Api.Challenges.Request
         [Newtonsoft.Json.JsonProperty("clock.increment", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore, Required = Newtonsoft.Json.Required.Default)]
         public int? ClockIncrement { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("days", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int Days { get; set; }
+        [Newtonsoft.Json.JsonProperty("days", Required = Newtonsoft.Json.Required.Default,
+            NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? Days { get; set; } = null;
 
         [Newtonsoft.Json.JsonProperty("color", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -37,6 +38,8 @@ namespace LichessApi.Web.Api.Challenges.Request
         [Newtonsoft.Json.JsonProperty("fen", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Fen { get; set; }
 
+        [Newtonsoft.Json.JsonProperty("message", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Message { get; set; } = "Your game with {opponent} is ready: {game}.";
     }
- 
+
 }

@@ -109,7 +109,7 @@ namespace LichessApi.Web.Api.Teams
             Dictionary<string, string> request = new Dictionary<string, string>();
             request["max"] = max.ToString();
 
-            var response = await API.SendRawRequest(LichessApiConstants.EndPoints.GetTeamArenaTournaments(teamId), HttpMethod.Get, parameters:request, token: token);
+            var response = await API.SendRawRequest(LichessApiConstants.EndPoints.GetTeamArenaTournaments(teamId), HttpMethod.Get, parameters:request, headers: API.AcceptNdJsonHeaders(), token: token);
 
             await foreach (var o in StreamNdJson<ArenaTournament>(response, token))
             {

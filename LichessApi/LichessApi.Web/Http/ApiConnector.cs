@@ -15,6 +15,10 @@ namespace LichessApi.Web.Http
         private readonly IJSONSerializer _jsonSerializer;
         private readonly IHTTPClient _httpClient;
         private readonly IHTTPLogger? _httpLogger;
+        private readonly Dictionary<string, string> ndjsonHeaders = new Dictionary<string, string>()
+        {
+            {"Accept", "application/x-ndjson"}
+        };
 
         public event EventHandler<IResponse>? ResponseReceived;
 
@@ -171,6 +175,11 @@ namespace LichessApi.Web.Http
         public void SetRequestTimeout(TimeSpan timeout)
         {
             _httpClient.SetRequestTimeout(timeout);
+        }
+
+        public Dictionary<string,string> AcceptNdJsonHeaders( )
+        {
+            return ndjsonHeaders;
         }
 
         private IRequest CreateRequest(

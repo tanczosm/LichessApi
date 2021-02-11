@@ -53,7 +53,7 @@ namespace LichessApi.Web.Api.Users
         /// <see href="https://lichess.org/api#operation/playerTopNbPerfType"/></see>
         /// </summary>
         /// <returns></returns>
-        public Task<List<User>> GetOneLeaderboard(int numberOfUsers, PerfType gameVariant)
+        public Task<List<User>> GetOneLeaderboard(int numberOfUsers, GameVariant gameVariant)
         {
             Dictionary<string, string> headers = new Dictionary<string, string>();
             headers["Accept"] = "application/vnd.lichess.v3+json";
@@ -125,7 +125,7 @@ namespace LichessApi.Web.Api.Users
         {
             teamId.ShouldNotBeNullOrEmpty();
 
-            var response = await API.SendRawRequest(LichessApiConstants.EndPoints.GetTeamMembers(teamId), HttpMethod.Get, token: token).ConfigureAwait(false);
+            var response = await API.SendRawRequest(LichessApiConstants.EndPoints.GetTeamMembers(teamId), HttpMethod.Get, headers: API.AcceptNdJsonHeaders(), token: token).ConfigureAwait(false);
 
             await foreach (var o in StreamNdJson<UserExtended>(response, token))
             {
