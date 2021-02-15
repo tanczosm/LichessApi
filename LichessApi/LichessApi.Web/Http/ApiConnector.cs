@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Net;
 using System.Threading;
+using LichessApi.Web.Exceptions;
 
 #pragma warning disable CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
 namespace LichessApi.Web.Http
@@ -292,7 +293,8 @@ namespace LichessApi.Web.Http
             throw response.StatusCode switch
             {
                 HttpStatusCode.Unauthorized => new ApiUnauthorizedException(response),
-                HttpStatusCode.BadRequest => new ApiInvalidRequest(response),
+                HttpStatusCode.BadRequest => new ApiInvalidRequestException(response),
+                HttpStatusCode.TooManyRequests => new ApiRateLimitExceededException(response),
                 _ => new Exception("Unhandled http result")
             };
         }
