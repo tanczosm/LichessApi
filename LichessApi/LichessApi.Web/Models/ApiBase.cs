@@ -26,6 +26,15 @@ namespace LichessApi.Web.Models
 
         public async IAsyncEnumerable<T> StreamNdJson<T>(IResponse response, [EnumeratorCancellation] CancellationToken token = default) 
         {
+            var taskCompletionSource = new TaskCompletionSource<decimal>();
+
+            // Register cancellation delegate with token
+            token.Register(() =>
+            {
+                // We received a cancellation message, cancel the TaskCompletionSource.Task
+                taskCompletionSource.TrySetCanceled();
+            });
+
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 response.Body.ShouldNotBeNull();
@@ -34,34 +43,40 @@ namespace LichessApi.Web.Models
                 {
                     using (StreamReader contentStreamReader = new StreamReader(response.Body! as Stream))
                     {
-                        // !contentStreamReader.EndOfStream
                         while (!token.IsCancellationRequested)
                         {
                             // Generate new mock headers
                             Http.Response apiResponse = new Http.Response(response.Headers.Select(dict => dict)
                                 .ToDictionary(pair => pair.Key, pair => pair.Value));
 
-                            //string line = null;
+                            string body = null;
 
                             try
                             {
-                                apiResponse.Body = await contentStreamReader.ReadLineAsync();
+                                Task<string> reader = contentStreamReader.ReadLineAsync();
+
+                                // Does the reader task complete first or is the token cancelled?
+                                await Task.WhenAny(reader, taskCompletionSource.Task);
+
+                                if (reader.IsCompleted)
+                                {
+                                    body = reader.Result;
+                                }
+
                             }
                             catch (Exception e)
                             {
                                 // Catch IO errors
-                                apiResponse.Body = null;
                             }
-
-                            apiResponse.ContentType = "application/json";
-
-                            string body = (apiResponse.Body as string);
 
                             if (body is null)
                                 yield break;
 
                             if (body.Length == 0)
                                 continue;
+
+                            apiResponse.ContentType = "application/json";
+                            apiResponse.Body = body;
 
                             yield return API.JSONSerializer
                                 .DeserializeResponse<T>(apiResponse).Body;
