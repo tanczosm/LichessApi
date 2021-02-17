@@ -31,7 +31,7 @@ namespace LichessApi.Web.Models
         [Newtonsoft.Json.JsonProperty("challenger", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public LightUser Challenger { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("destUser", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("destUser", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Include)]
         public LightUser DestUser { get; set; }
 
         /// <summary>

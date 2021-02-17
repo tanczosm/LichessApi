@@ -34,18 +34,33 @@ namespace LichessApi.Web.Models
                 {
                     using (StreamReader contentStreamReader = new StreamReader(response.Body! as Stream))
                     {
-                        while (!contentStreamReader.EndOfStream && !token.IsCancellationRequested)
+                        // !contentStreamReader.EndOfStream
+                        while (!token.IsCancellationRequested)
                         {
                             // Generate new mock headers
-
                             Http.Response apiResponse = new Http.Response(response.Headers.Select(dict => dict)
-                                .ToDictionary(pair => pair.Key, pair => pair.Value))
+                                .ToDictionary(pair => pair.Key, pair => pair.Value));
+
+                            //string line = null;
+
+                            try
                             {
-                                Body = await contentStreamReader.ReadLineAsync()
-                            };
+                                apiResponse.Body = await contentStreamReader.ReadLineAsync();
+                            }
+                            catch (Exception e)
+                            {
+                                // Catch IO errors
+                                apiResponse.Body = null;
+                            }
+
                             apiResponse.ContentType = "application/json";
 
-                            if (String.IsNullOrEmpty(apiResponse.Body as string))
+                            string body = (apiResponse.Body as string);
+
+                            if (body is null)
+                                yield break;
+
+                            if (body.Length == 0)
                                 continue;
 
                             yield return API.JSONSerializer
